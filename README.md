@@ -59,7 +59,7 @@ That's all.
 Comparison helper
 -------------------------------------------------
 
-**is**
+### is
 
 Given one argument, is acts exactly like `if`:
 
@@ -84,29 +84,15 @@ The following comparators are supported:
 If you use this helper with an object or array as it's first parameter it will
 base the calculation on the number of entries.
 
+    {{#is list 3}} ... {{else}} ... {{/is}}
 
-Array helpers
--------------------------------------------------
-
-**index**
-**withIndex**
-**eachIndex** start, stop
-**join** delimiter
-**length**
-
-
-Object helpers
--------------------------------------------------
-
-**property**
-**withProperty**
-**eachProperty**
+This will use the if part if the array list contains exactly 3 entries.
 
 
 String helpers
 -------------------------------------------------
 
-**lowercase**
+### lowercase
 
 Turns a string to lowercase.
 
@@ -118,7 +104,7 @@ Result:
 
     this should be lowercase
 
-**uppercase**
+### uppercase
 
 Turns a string to uppercase.
 
@@ -130,7 +116,7 @@ Result:
 
     THIS SHOULD BE LOWERCASE
 
-**capitalizeFirst**
+### capitalizeFirst
 
 Capitalizes the first word in a string.
 
@@ -142,7 +128,7 @@ Result:
 
     This should be lowercase
 
-**capitalizeEach**
+### capitalizeEach
 
 Capitalizes each word in a string.
 
@@ -154,10 +140,15 @@ Result:
 
     This Should Be Lowercase
 
-**shorten**
+### shorten
 
 This will shorten the given text and add ellipsis if it is too long. This is done
 word aware.
+
+_Parameter:_
+
+* test to modify
+* (integer) max number oof characters
 
     {{truncate "this should be lowercase" 18}}
 
@@ -166,47 +157,33 @@ The parameters are the text to shorten and the maximum length to use.
     this should be...
 
 
-Date helpers
+Format helpers
 -------------------------------------------------
 
-**dateFormat**
+### format
 
 Parameter:
 
-- date - to be printed (alternatively given as content)
-- format - defining the display format
+- object - to be printed (alternatively given as content)
+- format (string) - defining the display format
+- locale (string) - additionally specify a locale to use
 
 Examples:
 
-    {{dateFormat date "MMMM YYYY"}}
+    {{format date "MMMM YYYY"}}
     # January 2016
-    {{dateFormat date "LL"}}
+    {{format date "LL" "de"}}
+    # 18. January 2016
+    {{#format "LL"}}2016-01-20{{/dateFormat}}
     # January 18, 2016
-    {{#dateFormat "LL"}}2016-01-20{{/dateFormat}}
-    # January 18, 2016
 
-See the description of [moment.js](http://momentjs.com/docs/#/displaying/) for
-the possible format strings.
+See the description of [moment.js](http://momentjs.com/docs/#/displaying/) and
+[numeral.js](http://numeraljs.com/) for the possible format strings.
 
-The language for the date format can be set by using `moment.locale 'de'` or any
-other locale before executing the handlebars template.
-
-**dateAdd**
-
-Parameter:
-
-- date - to be changed (alternatively given as content)
-- count - number of interval units (negative to go back)
-- interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
-
-Examples:
-
-    {{#dateFormat "LL"}}{{dateAdd date 1 "month"}}{{/dateFormat}}
-    # February 23, 1974
+The language for the date format can be given as last argument (two letter code).
 
 
-Number helpers
--------------------------------------------------
+### unit
 
 **unitFormat**
 
@@ -229,6 +206,42 @@ Examples:
     {{unitFormat x "mm" "km"}}  # 1.23 km
     {{unitFormat x "mm" "m"}}   # 1230 m
     {{unitFormat x "mm" "m" 4}} # 1235 m
+
+
+Math helpers
+-------------------------------------------------
+
+### add
+### subtract
+
+**dateAdd**
+
+Parameter:
+
+- date - to be changed (alternatively given as content)
+- count - number of interval units (negative to go back)
+- interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+
+Examples:
+
+    {{#dateFormat "LL"}}{{dateAdd date 1 "month"}}{{/dateFormat}}
+    # February 23, 1974
+
+
+
+Collection helpers
+-------------------------------------------------
+
+### index
+### withIndex
+### eachIndex start, stop
+### join delimiter
+### length
+
+### property
+### withProperty
+### eachProperty
+
 
 
 License

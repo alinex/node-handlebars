@@ -9,9 +9,22 @@
 # Node modules
 # -------------------------------------------------
 moment = null # load if needed
+chrono = null # load on demand
+numeral = null # load on demand
 math = null # load if needed
 # alinex modules
 util = require 'alinex-util'
+
+
+initMoment = ->
+  return if moment
+  moment = require 'moment'
+  chrono ?= require 'chrono-node'
+  moment.createFromInputFallback = (config) ->
+    config._d = switch config._i.toLowerCase()
+      when 'now' then new Date()
+      else chrono.parseDate config._i
+
 
 # Handlebars Helper
 # -------------------------------------------------
@@ -62,6 +75,99 @@ helper =
     # execute content or else part
     if result then fn data else inverse data
 
+  # ### String
+
+  lowercase: ->
+    {args} = argParse arguments
+    args[0].toLowerCase()
+
+  uppercase: ->
+    {args} = argParse arguments
+    args[0].toUpperCase()
+
+  capitalizeFirst: ->
+    {args} = argParse arguments
+    args[0].charAt(0).toUpperCase() + args[0].slice(1)
+
+  capitalizeEach: ->
+    {args} = argParse arguments
+    args[0].replace /\w\S*/g, (txt) -> txt.charAt(0).toUpperCase() + txt.substr(1)
+
+  shorten: ->
+    {args} = argParse arguments
+    [text, len] = args
+    util.string.shorten text, len
+
+
+  # ### Format
+
+  # format an ISO date using Moment.js - http://momentjs.com/
+  #
+  #     date = new Date()
+  #     {{dateFormat date "MMMM YYYY"}}
+  #     # January 2016
+  #     {{dateFormat date "LL"}}
+  #     # January 18, 2016
+  #     {{#dateFormat "LL"}}2016-01-18{{/dateFormat}}
+  #     # January 18, 2016
+  format: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      obj = fn data
+      [format, locale] = args
+    else
+      [obj, format, locale] = args
+    # format date
+    initMoment()
+    m = moment obj
+    if m.isValid()
+      m.locale locale if locale
+      return m.format format ? 'MMM Do, YYYY'
+    # format numbers
+    numeral ?= require 'numeral'
+    if locale
+      try
+        numeral.language locale, require "numeral/languages/#{locale}"
+        numeral.language locale
+    value = numeral(obj).format format
+    numeral.language 'en' if locale
+    value
+
+
+  unitFormat: ->
+    {args} = argParse arguments
+    num = args.shift()
+    from = args.shift() if args.length and typeof num is 'number'
+    to = args.shift() if args.length and typeof args[0] is 'string'
+    precision = args.shift() if args.length
+    # format value
+    math ?= require 'mathjs'
+    num = "#{num}#{from}" if from
+    value = math.unit num
+    value = value.to to if to
+    value.format precision ? 3
+
+
+  # ### dateAdd
+  #
+  # Add interval to date.
+  #
+  #     date = new Date()
+  #     {{dateAdd date 1 "month"}}
+  #     {{#dateAdd 1 "month"}}2016-01-18{{/dateAdd}}
+  dateAdd: ->
+    {args, fn} = argParse arguments
+    if fn
+      date = fn this
+      [count, interval] = args
+    else
+      [date, count, interval] = args
+    # calculate date
+    moment ?= require 'moment'
+    moment new Date date
+    .add count, interval
+    .toDate()
+
   # ### Array
 
   index: ->
@@ -107,84 +213,7 @@ helper =
 #    result
 #, 'object'
 #
-  # ### String
 
-  lowercase: ->
-    {args} = argParse arguments
-    args[0].toLowerCase()
-
-  uppercase: ->
-    {args} = argParse arguments
-    args[0].toUpperCase()
-
-  capitalizeFirst: ->
-    {args} = argParse arguments
-    args[0].charAt(0).toUpperCase() + args[0].slice(1)
-
-  capitalizeEach: ->
-    {args} = argParse arguments
-    args[0].replace /\w\S*/g, (txt) -> txt.charAt(0).toUpperCase() + txt.substr(1)
-
-  shorten: ->
-    {args} = argParse arguments
-    [text, len] = args
-    util.string.shorten text, len
-
-
-  # ### dateFormat
-  #
-  # format an ISO date using Moment.js - http://momentjs.com/
-  #
-  #     date = new Date()
-  #     {{dateFormat date "MMMM YYYY"}}
-  #     # January 2016
-  #     {{dateFormat date "LL"}}
-  #     # January 18, 2016
-  #     {{#dateFormat "LL"}}2016-01-18{{/dateFormat}}
-  #     # January 18, 2016
-  dateFormat: ->
-    {args, fn} = argParse arguments
-    if fn
-      date = fn this
-      [format] = args
-    else
-      [date, format] = args
-    # format date
-    moment ?= require 'moment'
-    moment(new Date date).format format ? 'MMM Do, YYYY'
-
-  # ### dateAdd
-  #
-  # Add interval to date.
-  #
-  #     date = new Date()
-  #     {{dateAdd date 1 "month"}}
-  #     {{#dateAdd 1 "month"}}2016-01-18{{/dateAdd}}
-  dateAdd: ->
-    {args, fn} = argParse arguments
-    if fn
-      date = fn this
-      [count, interval] = args
-    else
-      [date, count, interval] = args
-    # calculate date
-    moment ?= require 'moment'
-    moment new Date date
-    .add count, interval
-    .toDate()
-
-  unitFormat: ->
-    {args} = argParse arguments
-    num = args.shift()
-    from = args.shift() if args.length and typeof num is 'number'
-    to = args.shift() if args.length and typeof args[0] is 'string'
-    precision = args.shift() if args.length
-    # format value
-    math ?= require 'mathjs'
-    num = "#{num}#{from}" if from
-    value = math.unit num
-    value = value.to to if to
-    value.format precision ? 3
 
 
 # Register Helper Methods

@@ -31,9 +31,11 @@
   },
   "dependencies": {
     "alinex-util": "^2.0.3",
+    "chrono-node": "^1.2.1",
     "handlebars": "^4.0.5",
     "mathjs": "^3.2.0",
-    "moment": "^2.13.0"
+    "moment": "^2.13.0",
+    "numeral": "^1.5.3"
   },
   "devDependencies": {
     "alinex-builder": "1.x",
