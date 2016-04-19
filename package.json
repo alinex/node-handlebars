@@ -1,10 +1,13 @@
 {
   "name": "alinex-handlebars",
   "version": "0.0.0",
-  "description": "",
+  "description": "Helpers collection for the handlebars template engine.",
   "copyright": "Alexander Schilling 2016",
   "private": false,
-  "keywords": [],
+  "keywords": [
+    "handlebars",
+    "template"
+  ],
   "homepage": "http://alinex.github.io/node-handlebars/",
   "repository": {
     "type": "git",
@@ -26,10 +29,16 @@
   "directories": {
     "lib": "./lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "alinex-util": "^2.0.3",
+    "handlebars": "^4.0.5",
+    "mathjs": "^3.2.0",
+    "moment": "^2.13.0"
+  },
   "devDependencies": {
     "alinex-builder": "1.x",
-    "chai": "2.x"
+    "chai": "^2.3.0",
+    "chai-datetime": "^1.4.1"
   },
   "optionalDependencies": {},
   "engines": {

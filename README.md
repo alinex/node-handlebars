@@ -1,17 +1,234 @@
 Package: alinex-handlebars
 =================================================
 
-[![Build Status](https://travis-ci.org/alinex/node-handlebars.svg?branch=master)](https://travis-ci.org/alinex/node-handlebars) 
+[![Build Status](https://travis-ci.org/alinex/node-handlebars.svg?branch=master)](https://travis-ci.org/alinex/node-handlebars)
 [![Coverage Status](https://coveralls.io/repos/alinex/node-handlebars/badge.png?branch=master)](https://coveralls.io/r/alinex/node-handlebars?branch=master)
 [![Dependency Status](https://gemnasium.com/alinex/node-handlebars.png)](https://gemnasium.com/alinex/node-handlebars)
 
-Description comes here...
+This is a collection of helper methods extending the [handlebars](http://handlebarsjs.com/)
+template system.
+
+- powerful helper
+- easy to use
+- easy to integrate
+
+> It is one of the modules of the [Alinex Universe](http://alinex.github.io/code.html)
+> following the code standards defined in the [General Docs](http://alinex.github.io/develop).
 
 
 Install
 -------------------------------------------------
 
-[![NPM](https://nodei.co/npm/alinex-handlebars.png?downloads=true&stars=true)](https://nodei.co/npm/alinex-handlebars/)
+[![NPM](https://nodei.co/npm/alinex-handlebars.png?downloads=true&downloadRank=true&stars=true)
+ ![Downloads](https://nodei.co/npm-dl/alinex-handlebars.png?months=9&height=3)
+](https://www.npmjs.com/package/alinex-handlebars)
+
+The easiest way is to let npm add the module directly to your modules
+(from within you node modules directory):
+
+``` sh
+npm install alinex-handlebars --save
+```
+
+And update it to the latest version later:
+
+``` sh
+npm update alinex-handlebars --save
+```
+
+Always have a look at the latest [changes](Changelog.md).
+
+
+Usage
+-------------------------------------------------
+
+This library is implemented completely asynchronous, to allow io based checks
+and references within the structure.
+
+To use the handlebars you have to only include it and register it with your handlebars
+module:
+
+``` coffee
+handlebars = require 'handlebars'
+require('alinex-handlebars').register handlebars
+```
+
+That's all.
+
+
+Comparison helper
+-------------------------------------------------
+
+**is**
+
+Given one argument, is acts exactly like `if`:
+
+    {{#is x}} ... {{else}} ... {{/is}}
+
+Given two arguments, `is` compares the two are equal:
+
+    {{#is x y}} ... {{else}} ... {{/is}}
+
+Given three arguments, the second argument becomes the comparator:
+
+    {{#is x "not" y}} ... {{else}} ... {{/is}}
+    {{#is 5 ">=" 2}} ... {{else}} ... {{/is}}
+
+The following comparators are supported:
+
+- `==` or (no comparator) - equality checking
+- `!=` or `not` - not equal
+- `>`, `>=`, `<`, `<=` - greater/less number operators
+- `in`, `!in` - check a value exists in either a comma-separated string or an array
+
+If you use this helper with an object or array as it's first parameter it will
+base the calculation on the number of entries.
+
+
+Array helpers
+-------------------------------------------------
+
+**index**
+**withIndex**
+**eachIndex** start, stop
+**join** delimiter
+**length**
+
+
+Object helpers
+-------------------------------------------------
+
+**property**
+**withProperty**
+**eachProperty**
+
+
+String helpers
+-------------------------------------------------
+
+**lowercase**
+
+Turns a string to lowercase.
+
+Usage:
+
+    {{lowercase "THIS SHOULD BE LOWERCASE"}}
+
+Result:
+
+    this should be lowercase
+
+**uppercase**
+
+Turns a string to uppercase.
+
+Usage:
+
+    {{uppercase "this should be lowercase"}}
+
+Result:
+
+    THIS SHOULD BE LOWERCASE
+
+**capitalizeFirst**
+
+Capitalizes the first word in a string.
+
+Usage:
+
+    {{lowercase "this should be lowercase"}}
+
+Result:
+
+    This should be lowercase
+
+**capitalizeEach**
+
+Capitalizes each word in a string.
+
+Usage:
+
+    {{lowercase "this should be lowercase"}}
+
+Result:
+
+    This Should Be Lowercase
+
+**shorten**
+
+This will shorten the given text and add ellipsis if it is too long. This is done
+word aware.
+
+    {{truncate "this should be lowercase" 18}}
+
+The parameters are the text to shorten and the maximum length to use.
+
+    this should be...
+
+
+Date helpers
+-------------------------------------------------
+
+**dateFormat**
+
+Parameter:
+
+- date - to be printed (alternatively given as content)
+- format - defining the display format
+
+Examples:
+
+    {{dateFormat date "MMMM YYYY"}}
+    # January 2016
+    {{dateFormat date "LL"}}
+    # January 18, 2016
+    {{#dateFormat "LL"}}2016-01-20{{/dateFormat}}
+    # January 18, 2016
+
+See the description of [moment.js](http://momentjs.com/docs/#/displaying/) for
+the possible format strings.
+
+The language for the date format can be set by using `moment.locale 'de'` or any
+other locale before executing the handlebars template.
+
+**dateAdd**
+
+Parameter:
+
+- date - to be changed (alternatively given as content)
+- count - number of interval units (negative to go back)
+- interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+
+Examples:
+
+    {{#dateFormat "LL"}}{{dateAdd date 1 "month"}}{{/dateFormat}}
+    # February 23, 1974
+
+
+Number helpers
+-------------------------------------------------
+
+**unitFormat**
+
+Formats a value with unit.
+
+Parameter:
+
+- number - as numeric value or string with unit
+- unit - the numeric value is given
+- toUnit - unit to use
+- precision - numeric value 1..
+
+Examples:
+
+    x = '1234567mm'
+    {{unitFormat x}}            # 1.23 km
+
+    x = 1234567
+    {{unitFormat x "mm"}}       # 1.23 km
+    {{unitFormat x "mm" "km"}}  # 1.23 km
+    {{unitFormat x "mm" "m"}}   # 1230 m
+    {{unitFormat x "mm" "m" 4}} # 1235 m
 
 
 License
