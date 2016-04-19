@@ -61,23 +61,27 @@
       </div>
 
       <div class="heading h3">
+        <a href="#string">String</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#format">Format</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#math-helper">Math helper</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#dateadd">dateAdd</a>
+      </div>
+
+      <div class="heading h3">
         <a href="#array">Array</a>
       </div>
 
       <div class="heading h1">
         <a href="#object">### Object</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#string">String</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#dateformat">dateFormat</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#dateadd">dateAdd</a>
       </div>
 
       <div class="heading h2">
@@ -136,6 +140,8 @@ Node modules
         </td>
         <td class="code highlight">
           <pre class="coffeescript">moment = <span class="hljs-literal">null</span> <span class="hljs-comment"># load if needed</span>
+chrono = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span>
+numeral = <span class="hljs-literal">null</span> <span class="hljs-comment"># load on demand</span>
 math = <span class="hljs-literal">null</span> <span class="hljs-comment"># load if needed</span></pre>
         </td>
       </tr>
@@ -149,7 +155,17 @@ math = <span class="hljs-literal">null</span> <span class="hljs-comment"># load 
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></pre>
+          <pre class="coffeescript">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+<span class="hljs-function">
+
+<span class="hljs-title">initMoment</span> = -&gt;</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> moment
+  moment = <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
+  chrono ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'chrono-node'</span>
+  moment.createFromInputFallback = <span class="hljs-function"><span class="hljs-params">(config)</span> -&gt;</span>
+    config._d = <span class="hljs-keyword">switch</span> config._i.toLowerCase()
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'now'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">new</span> Date()
+      <span class="hljs-keyword">else</span> chrono.parseDate config._i</pre>
         </td>
       </tr>
     
@@ -275,6 +291,225 @@ Comparison
     
       <tr>
         <td class="docs">
+          <div class="pilwrap" id="string">
+  <h3>
+    <a href="#string" name="string" class="pilcrow"></a>
+String
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+  <span class="hljs-attribute">lowercase</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].toLowerCase()
+
+  <span class="hljs-attribute">uppercase</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].toUpperCase()
+
+  <span class="hljs-attribute">capitalizeFirst</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].charAt(<span class="hljs-number">0</span>).toUpperCase() + args[<span class="hljs-number">0</span>].slice(<span class="hljs-number">1</span>)
+
+  <span class="hljs-attribute">capitalizeEach</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].replace <span class="hljs-regexp">/\w\S*/g</span>, <span class="hljs-function"><span class="hljs-params">(txt)</span> -&gt;</span> txt.charAt(<span class="hljs-number">0</span>).toUpperCase() + txt.substr(<span class="hljs-number">1</span>)
+
+  <span class="hljs-attribute">shorten</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    [text, len] = args
+    util.string.shorten text, len</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="format">
+  <h3>
+    <a href="#format" name="format" class="pilcrow"></a>
+Format
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>format an ISO date using Moment.js - http://momentjs.com/</p>
+<pre><code>date = new Date()
+{{dateFormat date &quot;MMMM YYYY&quot;}}
+# January 2016
+{{dateFormat date &quot;LL&quot;}}
+# January 18, 2016
+{{#dateFormat &quot;LL&quot;}}2016-01-18{{/dateFormat}}
+# January 18, 2016
+</code></pre>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-attribute">format</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn, data} = argParse arguments
+    <span class="hljs-keyword">if</span> fn
+      obj = fn data
+      [format, locale] = args
+    <span class="hljs-keyword">else</span>
+      [obj, format, locale] = args</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>format date</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    initMoment()
+    m = moment obj
+    <span class="hljs-keyword">if</span> m.isValid()
+      m.locale locale <span class="hljs-keyword">if</span> locale
+      <span class="hljs-keyword">return</span> m.format format ? <span class="hljs-string">'MMM Do, YYYY'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
+</div>
+<p>format numbers</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    <span class="hljs-keyword">if</span> format
+      numeral ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'numeral'</span>
+      <span class="hljs-keyword">if</span> locale
+        <span class="hljs-keyword">try</span>
+          numeral.language locale, <span class="hljs-built_in">require</span> <span class="hljs-string">"numeral/languages/<span class="hljs-subst">#{locale}</span>"</span>
+          numeral.language locale
+      obj = numeral(obj).format format
+      numeral.language <span class="hljs-string">'en'</span> <span class="hljs-keyword">if</span> locale
+    obj
+
+  <span class="hljs-attribute">unit</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn, data} = argParse arguments
+    <span class="hljs-keyword">if</span> fn
+      num = fn data
+      [from, to, format, locale] = args
+    <span class="hljs-keyword">else</span>
+      [num, from, to, format, locale] = args
+    format ?= <span class="hljs-string">'0.00'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16"></a>
+</div>
+<p>change unit</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    math ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'mathjs'</span>
+    num = <span class="hljs-string">"<span class="hljs-subst">#{num}</span><span class="hljs-subst">#{from}</span>"</span> <span class="hljs-keyword">if</span> from
+    value = math.unit num
+    value = value.to to <span class="hljs-keyword">if</span> to
+    value = value.format()</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17"></a>
+</div>
+<p>format value</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    numeral ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'numeral'</span>
+    <span class="hljs-keyword">if</span> locale
+      <span class="hljs-keyword">try</span>
+        numeral.language locale, <span class="hljs-built_in">require</span> <span class="hljs-string">"numeral/languages/<span class="hljs-subst">#{locale}</span>"</span>
+        numeral.language locale
+    [v, p] = value.split <span class="hljs-regexp">/[ ]/</span>
+    value = numeral(v).format(format) + <span class="hljs-string">' '</span> + p
+    numeral.language <span class="hljs-string">'en'</span> <span class="hljs-keyword">if</span> locale
+    value</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="math-helper">
+  <h3>
+    <a href="#math-helper" name="math-helper" class="pilcrow"></a>
+Math helper
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="dateadd">
+  <h3>
+    <a href="#dateadd" name="dateadd" class="pilcrow"></a>
+dateAdd
+  </h3>
+</div>
+<p>Add interval to date.</p>
+<pre><code>date = new Date()
+{{dateAdd date 1 &quot;month&quot;}}
+{{#dateAdd 1 &quot;month&quot;}}2016-01-18{{/dateAdd}}
+</code></pre>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-attribute">dateAdd</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn} = argParse arguments
+    <span class="hljs-keyword">if</span> fn
+      date = fn <span class="hljs-keyword">this</span>
+      [count, interval] = args
+    <span class="hljs-keyword">else</span>
+      [date, count, interval] = args</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-20" id="section-20"></a>
+</div>
+<p>calculate date</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    moment ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
+    moment <span class="hljs-keyword">new</span> Date date
+    .add count, interval
+    .toDate()</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
           <div class="pilwrap" id="array">
   <h3>
     <a href="#array" name="array" class="pilcrow"></a>
@@ -328,146 +563,10 @@ result = ''</p>
 result += options.fn key: key, value: value</p>
 <p>result
 , 'object'</p>
-<div class="pilwrap" id="string">
-  <h3>
-    <a href="#string" name="string" class="pilcrow"></a>
-String
-  </h3>
-</div>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">
-  <span class="hljs-attribute">lowercase</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    args[<span class="hljs-number">0</span>].toLowerCase()
-
-  <span class="hljs-attribute">uppercase</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    args[<span class="hljs-number">0</span>].toUpperCase()
-
-  <span class="hljs-attribute">capitalizeFirst</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    args[<span class="hljs-number">0</span>].charAt(<span class="hljs-number">0</span>).toUpperCase() + args[<span class="hljs-number">0</span>].slice(<span class="hljs-number">1</span>)
-
-  <span class="hljs-attribute">capitalizeEach</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    args[<span class="hljs-number">0</span>].replace <span class="hljs-regexp">/\w\S*/g</span>, <span class="hljs-function"><span class="hljs-params">(txt)</span> -&gt;</span> txt.charAt(<span class="hljs-number">0</span>).toUpperCase() + txt.substr(<span class="hljs-number">1</span>)
-
-  <span class="hljs-attribute">shorten</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    [text, len] = args
-    util.string.shorten text, len</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap" id="dateformat">
-  <h3>
-    <a href="#dateformat" name="dateformat" class="pilcrow"></a>
-dateFormat
-  </h3>
-</div>
-<p>format an ISO date using Moment.js - http://momentjs.com/</p>
-<pre><code>date = new Date()
-{{dateFormat date &quot;MMMM YYYY&quot;}}
-# January 2016
-{{dateFormat date &quot;LL&quot;}}
-# January 18, 2016
-{{#dateFormat &quot;LL&quot;}}2016-01-18{{/dateFormat}}
-# January 18, 2016
-</code></pre>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-attribute">dateFormat</span>: <span class="hljs-function">-&gt;</span>
-    {args, fn} = argParse arguments
-    <span class="hljs-keyword">if</span> fn
-      date = fn <span class="hljs-keyword">this</span>
-      [format] = args
-    <span class="hljs-keyword">else</span>
-      [date, format] = args</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap">
-  <a class="pilcrow" href="#section-14" id="section-14"></a>
-</div>
-<p>format date</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">    moment ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
-    moment(<span class="hljs-keyword">new</span> Date date).format format ? <span class="hljs-string">'MMM Do, YYYY'</span></pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap" id="dateadd">
-  <h3>
-    <a href="#dateadd" name="dateadd" class="pilcrow"></a>
-dateAdd
-  </h3>
-</div>
-<p>Add interval to date.</p>
-<pre><code>date = new Date()
-{{dateAdd date 1 &quot;month&quot;}}
-{{#dateAdd 1 &quot;month&quot;}}2016-01-18{{/dateAdd}}
-</code></pre>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-attribute">dateAdd</span>: <span class="hljs-function">-&gt;</span>
-    {args, fn} = argParse arguments
-    <span class="hljs-keyword">if</span> fn
-      date = fn <span class="hljs-keyword">this</span>
-      [count, interval] = args
-    <span class="hljs-keyword">else</span>
-      [date, count, interval] = args</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap">
-  <a class="pilcrow" href="#section-16" id="section-16"></a>
-</div>
-<p>calculate date</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">    moment ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
-    moment <span class="hljs-keyword">new</span> Date date
-    .add count, interval
-    .toDate()
-
-  <span class="hljs-attribute">unitFormat</span>: <span class="hljs-function">-&gt;</span>
-    {args} = argParse arguments
-    num = args.shift()
-    from = args.shift() <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> num <span class="hljs-keyword">is</span> <span class="hljs-string">'number'</span>
-    to = args.shift() <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> args[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
-    precision = args.shift() <span class="hljs-keyword">if</span> args.length</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap">
-  <a class="pilcrow" href="#section-17" id="section-17"></a>
-</div>
-<p>format value</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">    math ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'mathjs'</span>
-    num = <span class="hljs-string">"<span class="hljs-subst">#{num}</span><span class="hljs-subst">#{from}</span>"</span> <span class="hljs-keyword">if</span> from
-    value = math.unit num
-    value = value.to to <span class="hljs-keyword">if</span> to
-    value.format precision ? <span class="hljs-number">3</span></pre>
+          
         </td>
       </tr>
     
@@ -489,7 +588,7 @@ Register Helper Methods
       <tr>
         <td class="docs">
           <div class="pilwrap">
-  <a class="pilcrow" href="#section-19" id="section-19"></a>
+  <a class="pilcrow" href="#section-24" id="section-24"></a>
 </div>
 <p>register helper</p>
 

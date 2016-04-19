@@ -92,6 +92,10 @@
         <a href="#format">format</a>
       </div>
 
+      <div class="heading h3">
+        <a href="#unit">unit</a>
+      </div>
+
       <div class="heading h2">
         <a href="#math-helpers">Math helpers</a>
       </div>
@@ -230,6 +234,9 @@ is
 </ul>
 <p>If you use this helper with an object or array as it's first parameter it will
 base the calculation on the number of entries.</p>
+<pre><code>{{#is list 3}} ... {{else}} ... {{/is}}
+</code></pre>
+<p>This will use the if part if the array list contains exactly 3 entries.</p>
 <div class="pilwrap" id="string-helpers">
   <h2>
     <a href="#string-helpers" name="string-helpers" class="pilcrow"></a>
@@ -296,10 +303,14 @@ shorten
 </div>
 <p>This will shorten the given text and add ellipsis if it is too long. This is done
 word aware.</p>
+<p><em>Parameter:</em></p>
+<ul>
+<li>test to modify</li>
+<li>(integer) max number oof characters</li>
+</ul>
+<p><em>Examples:</em></p>
 <pre><code>{{truncate &quot;this should be lowercase&quot; 18}}
-</code></pre>
-<p>The parameters are the text to shorten and the maximum length to use.</p>
-<pre><code>this should be...
+# this should be...
 </code></pre>
 <div class="pilwrap" id="format-helpers">
   <h2>
@@ -313,42 +324,59 @@ Format helpers
 format
   </h3>
 </div>
-<p><strong>dateFormat</strong></p>
-<p>Parameter:</p>
+<p><em>Parameter:</em></p>
 <ul>
-<li>date - to be printed (alternatively given as content)</li>
-<li>format - defining the display format</li>
+<li>object - to be printed (alternatively given as content)</li>
+<li>format (string) - defining the display format</li>
+<li>locale (string) - additionally specify a locale to use</li>
 </ul>
-<p>Examples:</p>
-<pre><code>{{dateFormat date &quot;MMMM YYYY&quot;}}
+<p><em>Examples:</em></p>
+<pre><code>{{format date &quot;MMMM YYYY&quot;}}
 # January 2016
-{{dateFormat date &quot;LL&quot;}}
-# January 18, 2016
-{{#dateFormat &quot;LL&quot;}}2016-01-20{{/dateFormat}}
+
+{{format date &quot;LL&quot; &quot;de&quot;}}
+# 18. January 2016
+
+{{#format &quot;LL&quot;}}2016-01-20{{/dateFormat}}
 # January 18, 2016
 </code></pre>
-<p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> for
-the possible format strings.</p>
-<p>The language for the date format can be set by using <code>moment.locale 'de'</code> or any
-other locale before executing the handlebars template.</p>
-<p><strong>unitFormat</strong></p>
+<p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> and
+<a href="http://numeraljs.com/">numeral.js</a> for the possible format strings.</p>
+<p>The language for the date format can be given as last argument (two letter code).</p>
+<div class="pilwrap" id="unit">
+  <h3>
+    <a href="#unit" name="unit" class="pilcrow"></a>
+unit
+  </h3>
+</div>
 <p>Formats a value with unit.</p>
-<p>Parameter:</p>
+<p><em>Parameter:</em></p>
 <ul>
 <li>number - as numeric value or string with unit</li>
 <li>unit - the numeric value is given</li>
 <li>toUnit - unit to use</li>
-<li>precision - numeric value 1..</li>
+<li>format (string) - defining the display format</li>
+<li>locale (string) - additionally specify a locale to use</li>
 </ul>
-<p>Examples:</p>
+<p>You can call it without the last parameters but don't forget one in the middle.</p>
+<p><em>Examples:</em></p>
 <pre><code>x = '1234567mm'
-{{unitFormat x}}            # 1.23 km
+{{unit x}}            # 1.23 km
 
-x = 1234567
-{{unitFormat x &quot;mm&quot;}}       # 1.23 km
-{{unitFormat x &quot;mm&quot; &quot;km&quot;}}  # 1.23 km
-{{unitFormat x &quot;mm&quot; &quot;m&quot;}}   # 1230 m
-{{unitFormat x &quot;mm&quot; &quot;m&quot; 4}} # 1235 m
+{{unit 1234567 &quot;mm&quot;}}       
+# 1.23 km
+
+{{unit 1234567 &quot;mm&quot; &quot;km&quot;}}
+# 1.23 km
+
+{{unit 1234567 &quot;mm&quot; &quot;m&quot;}}
+# 1235 m
+
+{{unit 1234567 &quot;mm&quot; &quot;km&quot; &quot;0.0&quot;}}
+# 1.2 km
+
+{{unit 1234567 &quot;mm&quot; &quot;km&quot; &quot;0.0&quot; &quot;de&quot;}}
+# 1,2 km
 </code></pre>
 <div class="pilwrap" id="math-helpers">
   <h2>
