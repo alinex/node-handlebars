@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "home/alex/github/node-handlebars/README.md";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
+<body>
+  <nav>
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#package-alinex-handlebars">Package: alinex-handlebars</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#install">Install</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#usage">Usage</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#comparison-helper">Comparison helper</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#array-helpers">Array helpers</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#object-helpers">Object helpers</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#string-helpers">String helpers</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#date-helpers">Date helpers</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#number-helpers">Number helpers</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#license">License</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-handlebars" title="Fork me on GitHub"></a>
+    <div class="docs markdown"><div class="pilwrap" id="package-alinex-handlebars">
+  <h1>
+    <a href="#package-alinex-handlebars" name="package-alinex-handlebars" class="pilcrow"></a>
+Package: alinex-handlebars
+  </h1>
+</div>
+<p><a href="https://travis-ci.org/alinex/node-handlebars"><img src="https://travis-ci.org/alinex/node-handlebars.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/alinex/node-handlebars?branch=master"><img src="https://coveralls.io/repos/alinex/node-handlebars/badge.png?branch=master" alt="Coverage Status"></a>
+<a href="https://gemnasium.com/alinex/node-handlebars"><img src="https://gemnasium.com/alinex/node-handlebars.png" alt="Dependency Status"></a></p>
+<p>This is a collection of helper methods extending the <a href="http://handlebarsjs.com/">handlebars</a>
+template system.</p>
+<ul>
+<li>powerful helper</li>
+<li>easy to use</li>
+<li>easy to integrate</li>
+</ul>
+<blockquote>
+<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
+following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
+</blockquote>
+<div class="pilwrap" id="install">
+  <h2>
+    <a href="#install" name="install" class="pilcrow"></a>
+Install
+  </h2>
+</div>
+<p><a href="https://www.npmjs.com/package/alinex-handlebars"><img src="https://nodei.co/npm/alinex-handlebars.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
+<img src="https://nodei.co/npm-dl/alinex-handlebars.png?months=9&amp;height=3" alt="Downloads">
+</a></p>
+<p>The easiest way is to let npm add the module directly to your modules
+(from within you node modules directory):</p>
+<pre><code class="sh">npm install alinex-handlebars --save
+</code></pre>
+<p>And update it to the latest version later:</p>
+<pre><code class="sh">npm update alinex-handlebars --save
+</code></pre>
+<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
+<div class="pilwrap" id="usage">
+  <h2>
+    <a href="#usage" name="usage" class="pilcrow"></a>
+Usage
+  </h2>
+</div>
+<p>This library is implemented completely asynchronous, to allow io based checks
+and references within the structure.</p>
+<p>To use the handlebars you have to only include it and register it with your handlebars
+module:</p>
+<pre><code class="coffee">handlebars = <span class="hljs-built_in">require</span> <span class="hljs-string">'handlebars'</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-handlebars'</span>).register handlebars
+</code></pre>
+<p>That's all.</p>
+<div class="pilwrap" id="comparison-helper">
+  <h2>
+    <a href="#comparison-helper" name="comparison-helper" class="pilcrow"></a>
+Comparison helper
+  </h2>
+</div>
+<p><strong>is</strong></p>
+<p>Given one argument, is acts exactly like <code>if</code>:</p>
+<pre><code>{{#is x}} ... {{else}} ... {{/is}}
+</code></pre>
+<p>Given two arguments, <code>is</code> compares the two are equal:</p>
+<pre><code>{{#is x y}} ... {{else}} ... {{/is}}
+</code></pre>
+<p>Given three arguments, the second argument becomes the comparator:</p>
+<pre><code>{{#is x &quot;not&quot; y}} ... {{else}} ... {{/is}}
+{{#is 5 &quot;&gt;=&quot; 2}} ... {{else}} ... {{/is}}
+</code></pre>
+<p>The following comparators are supported:</p>
+<ul>
+<li><code>==</code> or (no comparator) - equality checking</li>
+<li><code>!=</code> or <code>not</code> - not equal</li>
+<li><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code> - greater/less number operators</li>
+<li><code>in</code>, <code>!in</code> - check a value exists in either a comma-separated string or an array</li>
+</ul>
+<p>If you use this helper with an object or array as it's first parameter it will
+base the calculation on the number of entries.</p>
+<div class="pilwrap" id="array-helpers">
+  <h2>
+    <a href="#array-helpers" name="array-helpers" class="pilcrow"></a>
+Array helpers
+  </h2>
+</div>
+<p><strong>index</strong>
+<strong>withIndex</strong>
+<strong>eachIndex</strong> start, stop
+<strong>join</strong> delimiter
+<strong>length</strong></p>
+<div class="pilwrap" id="object-helpers">
+  <h2>
+    <a href="#object-helpers" name="object-helpers" class="pilcrow"></a>
+Object helpers
+  </h2>
+</div>
+<p><strong>property</strong>
+<strong>withProperty</strong>
+<strong>eachProperty</strong></p>
+<div class="pilwrap" id="string-helpers">
+  <h2>
+    <a href="#string-helpers" name="string-helpers" class="pilcrow"></a>
+String helpers
+  </h2>
+</div>
+<p><strong>lowercase</strong></p>
+<p>Turns a string to lowercase.</p>
+<p>Usage:</p>
+<pre><code>{{lowercase &quot;THIS SHOULD BE LOWERCASE&quot;}}
+</code></pre>
+<p>Result:</p>
+<pre><code>this should be lowercase
+</code></pre>
+<p><strong>uppercase</strong></p>
+<p>Turns a string to uppercase.</p>
+<p>Usage:</p>
+<pre><code>{{uppercase &quot;this should be lowercase&quot;}}
+</code></pre>
+<p>Result:</p>
+<pre><code>THIS SHOULD BE LOWERCASE
+</code></pre>
+<p><strong>capitalizeFirst</strong></p>
+<p>Capitalizes the first word in a string.</p>
+<p>Usage:</p>
+<pre><code>{{lowercase &quot;this should be lowercase&quot;}}
+</code></pre>
+<p>Result:</p>
+<pre><code>This should be lowercase
+</code></pre>
+<p><strong>capitalizeEach</strong></p>
+<p>Capitalizes each word in a string.</p>
+<p>Usage:</p>
+<pre><code>{{lowercase &quot;this should be lowercase&quot;}}
+</code></pre>
+<p>Result:</p>
+<pre><code>This Should Be Lowercase
+</code></pre>
+<p><strong>shorten</strong></p>
+<p>This will shorten the given text and add ellipsis if it is too long. This is done
+word aware.</p>
+<pre><code>{{truncate &quot;this should be lowercase&quot; 18}}
+</code></pre>
+<p>The parameters are the text to shorten and the maximum length to use.</p>
+<pre><code>this should be...
+</code></pre>
+<div class="pilwrap" id="date-helpers">
+  <h2>
+    <a href="#date-helpers" name="date-helpers" class="pilcrow"></a>
+Date helpers
+  </h2>
+</div>
+<p><strong>dateFormat</strong></p>
+<p>Parameter:</p>
+<ul>
+<li>date - to be printed (alternatively given as content)</li>
+<li>format - defining the display format</li>
+</ul>
+<p>Examples:</p>
+<pre><code>{{dateFormat date &quot;MMMM YYYY&quot;}}
+# January 2016
+{{dateFormat date &quot;LL&quot;}}
+# January 18, 2016
+{{#dateFormat &quot;LL&quot;}}2016-01-20{{/dateFormat}}
+# January 18, 2016
+</code></pre>
+<p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> for
+the possible format strings.</p>
+<p>The language for the date format can be set by using <code>moment.locale 'de'</code> or any
+other locale before executing the handlebars template.</p>
+<p><strong>dateAdd</strong></p>
+<p>Parameter:</p>
+<ul>
+<li>date - to be changed (alternatively given as content)</li>
+<li>count - number of interval units (negative to go back)</li>
+<li>interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
+</ul>
+<p>Examples:</p>
+<pre><code>{{#dateFormat &quot;LL&quot;}}{{dateAdd date 1 &quot;month&quot;}}{{/dateFormat}}
+# February 23, 1974
+</code></pre>
+<div class="pilwrap" id="number-helpers">
+  <h2>
+    <a href="#number-helpers" name="number-helpers" class="pilcrow"></a>
+Number helpers
+  </h2>
+</div>
+<p><strong>unitFormat</strong></p>
+<p>Formats a value with unit.</p>
+<p>Parameter:</p>
+<ul>
+<li>number - as numeric value or string with unit</li>
+<li>unit - the numeric value is given</li>
+<li>toUnit - unit to use</li>
+<li>precision - numeric value 1..</li>
+</ul>
+<p>Examples:</p>
+<pre><code>x = '1234567mm'
+{{unitFormat x}}            # 1.23 km
+
+x = 1234567
+{{unitFormat x &quot;mm&quot;}}       # 1.23 km
+{{unitFormat x &quot;mm&quot; &quot;km&quot;}}  # 1.23 km
+{{unitFormat x &quot;mm&quot; &quot;m&quot;}}   # 1230 m
+{{unitFormat x &quot;mm&quot; &quot;m&quot; 4}} # 1235 m
+</code></pre>
+<div class="pilwrap" id="license">
+  <h2>
+    <a href="#license" name="license" class="pilcrow"></a>
+License
+  </h2>
+</div>
+<p>Copyright 2016 Alexander Schilling</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<blockquote>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</blockquote>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</div>
+  </div>
+</body>
+</html>

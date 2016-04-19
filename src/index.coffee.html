@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>index.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-handlebars/src/index.coffee";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
+<body>
+  <nav>
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#domain-name-validation">Domain name validation</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#node-modules">Node modules</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#handlebars-helper">Handlebars Helper</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#get-arguments">Get arguments</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#comparison">Comparison</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#array">Array</a>
+      </div>
+
+      <div class="heading h1">
+        <a href="#object">### Object</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#string">String</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#dateformat">dateFormat</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#dateadd">dateAdd</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#register-helper-methods">Register Helper Methods</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-handlebars" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="domain-name-validation">
+  <h1>
+    <a href="#domain-name-validation" name="domain-name-validation" class="pilcrow"></a>
+Domain name validation
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>Check options:</p>
+<ul>
+<li><code>optional</code> - the value must not be present (will return null)</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="node-modules">
+  <h2>
+    <a href="#node-modules" name="node-modules" class="pilcrow"></a>
+Node modules
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">moment = <span class="hljs-literal">null</span> <span class="hljs-comment"># load if needed</span>
+math = <span class="hljs-literal">null</span> <span class="hljs-comment"># load if needed</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>alinex modules</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="handlebars-helper">
+  <h2>
+    <a href="#handlebars-helper" name="handlebars-helper" class="pilcrow"></a>
+Handlebars Helper
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="get-arguments">
+  <h3>
+    <a href="#get-arguments" name="get-arguments" class="pilcrow"></a>
+Get arguments
+  </h3>
+</div>
+<ul>
+<li>name - name of the function</li>
+<li>args - the normal parameters</li>
+<li>hash - named parameters</li>
+<li>fn - content function in block helpers</li>
+<li>inverse - else part of block helpers</li>
+<li>data - current context</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript"><span class="hljs-function"><span class="hljs-title">argParse</span> = <span class="hljs-params">(args)</span> -&gt;</span>
+  args = [].slice.call(args)
+  options = args[args.length-<span class="hljs-number">1</span>]
+  options.args = args[<span class="hljs-number">0.</span>.-<span class="hljs-number">2</span>]
+  options.data = options.data.root
+  options
+
+helper =</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="comparison">
+  <h3>
+    <a href="#comparison" name="comparison" class="pilcrow"></a>
+Comparison
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+  <span class="hljs-attribute">is</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn, inverse, data} = argParse arguments
+    <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">is</span> <span class="hljs-number">2</span>
+      [left, right] = args
+      operator = <span class="hljs-string">'=='</span>
+    <span class="hljs-keyword">else</span>
+      [left, operator, right] = args</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>use count of entries for array</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> left <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+      left = Object.keys(left).length</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>call comparison</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    result = <span class="hljs-keyword">switch</span> operator
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'&gt;'</span> <span class="hljs-keyword">then</span> left &gt; right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'&lt;'</span> <span class="hljs-keyword">then</span> left &lt; right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'&gt;='</span> <span class="hljs-keyword">then</span> left &gt;= right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'&lt;='</span> <span class="hljs-keyword">then</span> left &lt;= right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'=='</span> <span class="hljs-keyword">then</span> left <span class="hljs-keyword">is</span> right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'not'</span>, <span class="hljs-string">'!='</span> <span class="hljs-keyword">then</span> left <span class="hljs-keyword">isnt</span> right
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'in'</span>
+        right = right.split <span class="hljs-regexp">/\s*,\s*/</span> <span class="hljs-keyword">unless</span> Array.isArray right
+        ~right.indexOf left
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'!in'</span>
+        right = right.split <span class="hljs-regexp">/\s*,\s*/</span> <span class="hljs-keyword">unless</span> Array.isArray right
+        <span class="hljs-keyword">not</span> ~right.indexOf left
+      <span class="hljs-keyword">else</span> left</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>execute content or else part</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    <span class="hljs-keyword">if</span> result <span class="hljs-keyword">then</span> fn data <span class="hljs-keyword">else</span> inverse data</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="array">
+  <h3>
+    <a href="#array" name="array" class="pilcrow"></a>
+Array
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+  <span class="hljs-attribute">index</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    [list, i, j] = args
+    i = <span class="hljs-keyword">if</span> i <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> list.length -<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> i ? <span class="hljs-number">0</span>
+    j ?= i
+    list[i..j]
+
+  <span class="hljs-attribute">withIndex</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn, data} = argParse arguments
+    [list, i, j] = args
+    i = <span class="hljs-keyword">if</span> i <span class="hljs-keyword">is</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">then</span> list.length -<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> i ? <span class="hljs-number">0</span>
+    j ?= i
+    list[i..j].map (e) -&gt; fn e
+    .join <span class="hljs-string">''</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <p>Swag.addHelper 'join', (array, separator) -&gt;
+array.join if Utils.isUndefined(separator) then ' ' else separator
+, 'array'</p>
+<p>Swag.addHelper 'length', (array) -&gt;
+array.length
+, 'array'</p>
+<p>Swag.addHelper 'eachIndex', (array, options) -&gt;
+result = ''</p>
+<p>for value, index in array
+result += options.fn item: value, index: index</p>
+<p>result
+, 'array'</p>
+<div class="pilwrap" id="object">
+  <h1>
+    <a href="#object" name="object" class="pilcrow"></a>
+### Object
+  </h1>
+</div>
+<p>Swag.addHelper 'eachProperty', (obj, options) -&gt;
+result = ''</p>
+<p>for key, value of obj
+result += options.fn key: key, value: value</p>
+<p>result
+, 'object'</p>
+<div class="pilwrap" id="string">
+  <h3>
+    <a href="#string" name="string" class="pilcrow"></a>
+String
+  </h3>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">
+  <span class="hljs-attribute">lowercase</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].toLowerCase()
+
+  <span class="hljs-attribute">uppercase</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].toUpperCase()
+
+  <span class="hljs-attribute">capitalizeFirst</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].charAt(<span class="hljs-number">0</span>).toUpperCase() + args[<span class="hljs-number">0</span>].slice(<span class="hljs-number">1</span>)
+
+  <span class="hljs-attribute">capitalizeEach</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    args[<span class="hljs-number">0</span>].replace <span class="hljs-regexp">/\w\S*/g</span>, <span class="hljs-function"><span class="hljs-params">(txt)</span> -&gt;</span> txt.charAt(<span class="hljs-number">0</span>).toUpperCase() + txt.substr(<span class="hljs-number">1</span>)
+
+  <span class="hljs-attribute">shorten</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    [text, len] = args
+    util.string.shorten text, len</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="dateformat">
+  <h3>
+    <a href="#dateformat" name="dateformat" class="pilcrow"></a>
+dateFormat
+  </h3>
+</div>
+<p>format an ISO date using Moment.js - http://momentjs.com/</p>
+<pre><code>date = new Date()
+{{dateFormat date &quot;MMMM YYYY&quot;}}
+# January 2016
+{{dateFormat date &quot;LL&quot;}}
+# January 18, 2016
+{{#dateFormat &quot;LL&quot;}}2016-01-18{{/dateFormat}}
+# January 18, 2016
+</code></pre>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-attribute">dateFormat</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn} = argParse arguments
+    <span class="hljs-keyword">if</span> fn
+      date = fn <span class="hljs-keyword">this</span>
+      [format] = args
+    <span class="hljs-keyword">else</span>
+      [date, format] = args</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>format date</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    moment ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
+    moment(<span class="hljs-keyword">new</span> Date date).format format ? <span class="hljs-string">'MMM Do, YYYY'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="dateadd">
+  <h3>
+    <a href="#dateadd" name="dateadd" class="pilcrow"></a>
+dateAdd
+  </h3>
+</div>
+<p>Add interval to date.</p>
+<pre><code>date = new Date()
+{{dateAdd date 1 &quot;month&quot;}}
+{{#dateAdd 1 &quot;month&quot;}}2016-01-18{{/dateAdd}}
+</code></pre>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-attribute">dateAdd</span>: <span class="hljs-function">-&gt;</span>
+    {args, fn} = argParse arguments
+    <span class="hljs-keyword">if</span> fn
+      date = fn <span class="hljs-keyword">this</span>
+      [count, interval] = args
+    <span class="hljs-keyword">else</span>
+      [date, count, interval] = args</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16"></a>
+</div>
+<p>calculate date</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    moment ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'moment'</span>
+    moment <span class="hljs-keyword">new</span> Date date
+    .add count, interval
+    .toDate()
+
+  <span class="hljs-attribute">unitFormat</span>: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    num = args.shift()
+    from = args.shift() <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> num <span class="hljs-keyword">is</span> <span class="hljs-string">'number'</span>
+    to = args.shift() <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> args[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+    precision = args.shift() <span class="hljs-keyword">if</span> args.length</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17"></a>
+</div>
+<p>format value</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    math ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'mathjs'</span>
+    num = <span class="hljs-string">"<span class="hljs-subst">#{num}</span><span class="hljs-subst">#{from}</span>"</span> <span class="hljs-keyword">if</span> from
+    value = math.unit num
+    value = value.to to <span class="hljs-keyword">if</span> to
+    value.format precision ? <span class="hljs-number">3</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="register-helper-methods">
+  <h2>
+    <a href="#register-helper-methods" name="register-helper-methods" class="pilcrow"></a>
+Register Helper Methods
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.register = <span class="hljs-function"><span class="hljs-params">(handlebars)</span> -&gt;</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-19" id="section-19"></a>
+</div>
+<p>register helper</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">for</span> key, fn <span class="hljs-keyword">of</span> helper
+    handlebars.registerHelper key, fn</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
