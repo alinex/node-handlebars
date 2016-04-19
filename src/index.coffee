@@ -8,8 +8,8 @@
 
 # Node modules
 # -------------------------------------------------
-moment = require 'moment'
-math = require 'mathjs'
+moment = null # load if needed
+math = null # load if needed
 # alinex modules
 util = require 'alinex-util'
 
@@ -150,6 +150,7 @@ helper =
     else
       [date, format] = args
     # format date
+    moment ?= require 'moment'
     moment(new Date date).format format ? 'MMM Do, YYYY'
 
   # ### dateAdd
@@ -167,6 +168,7 @@ helper =
     else
       [date, count, interval] = args
     # calculate date
+    moment ?= require 'moment'
     moment new Date date
     .add count, interval
     .toDate()
@@ -178,6 +180,7 @@ helper =
     to = args.shift() if args.length and typeof args[0] is 'string'
     precision = args.shift() if args.length
     # format value
+    math ?= require 'mathjs'
     num = "#{num}#{from}" if from
     value = math.unit num
     value = value.to to if to
