@@ -8,22 +8,22 @@ describe "format helper", ->
   it "should format dates", ->
     context =
       date: new Date('1974-01-23')
-    test.equal '{{format date "LL"}}', context, 'January 23, 1974'
+    test.equal '{{date date "LL"}}', context, 'January 23, 1974'
 
   it "should parse and format dates", ->
-    test.equal '{{format "1974-01-23" "LL"}}', context, 'January 23, 1974'
+    test.equal '{{date "1974-01-23" "LL"}}', context, 'January 23, 1974'
 
   it "should format dates intl", ->
     context =
       date: new Date('1974-01-23')
     oldLocale = moment.locale()
     moment.locale 'de'
-    test.equal '{{format date "LL"}}', context, '23. Januar 1974'
-    test.equal '{{#format "LL"}}1974-01-23{{/format}}', context, '23. Januar 1974'
+    test.equal '{{date date "LL"}}', context, '23. Januar 1974'
+    test.equal '{{#date "LL"}}1974-01-23{{/date}}', context, '23. Januar 1974'
     moment.locale oldLocale
 
   it "should format dates intl with specified language", ->
-    test.equal '{{format "1974-01-23" "LL" "de"}}', context, '23. Januar 1974'
+    test.equal '{{date "1974-01-23" "LL" "de"}}', context, '23. Januar 1974'
 
 
   it "should allow unit format", ->

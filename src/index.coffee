@@ -117,12 +117,6 @@ helper =
       [format, locale] = args
     else
       [obj, format, locale] = args
-    # format date
-    initMoment()
-    m = moment obj
-    if m.isValid()
-      m.locale locale if locale
-      return m.format format ? 'MMM Do, YYYY'
     # format numbers
     if format
       numeral ?= require 'numeral'
@@ -132,6 +126,22 @@ helper =
           numeral.language locale
       obj = numeral(obj).format format
       numeral.language 'en' if locale
+    obj
+
+  date: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      obj = fn data
+      [format, locale] = args
+    else
+      [obj, format, locale] = args
+    # format date
+    initMoment()
+    m = moment obj
+    if m.isValid()
+      m.locale locale if locale
+      return m.format format ? 'MMM Do, YYYY'
+    # fallback
     obj
 
   unit: ->
@@ -168,65 +178,91 @@ helper =
   #     date = new Date()
   #     {{dateAdd date 1 "month"}}
   #     {{#dateAdd 1 "month"}}2016-01-18{{/dateAdd}}
-  dateAdd: ->
-    {args, fn} = argParse arguments
-    if fn
-      date = fn this
-      [count, interval] = args
-    else
-      [date, count, interval] = args
-    # calculate date
-    moment ?= require 'moment'
-    moment new Date date
-    .add count, interval
-    .toDate()
-
-  # ### Array
-
-  index: ->
-    {args} = argParse arguments
-    [list, i, j] = args
-    i = if i is -1 then list.length -1 else i ? 0
-    j ?= i
-    list[i..j]
-
-  withIndex: ->
+  add: ->
     {args, fn, data} = argParse arguments
-    [list, i, j] = args
-    i = if i is -1 then list.length -1 else i ? 0
-    j ?= i
-    list[i..j].map (e) -> fn e
-    .join ''
+    if fn
+      obj = fn data
+      [num] = args
+    else
+      [obj, num] = args
+    # work with numbers
+    return Number(obj) + num
 
-#Swag.addHelper 'join', (array, separator) ->
-#    array.join if Utils.isUndefined(separator) then ' ' else separator
-#, 'array'
-#
-#Swag.addHelper 'length', (array) ->
-#    array.length
-#, 'array'
-#
-#Swag.addHelper 'eachIndex', (array, options) ->
-#    result = ''
-#
-#    for value, index in array
-#        result += options.fn item: value, index: index
-#
-#    result
-#, 'array'
-#
-#  # ### Object
-#
-#Swag.addHelper 'eachProperty', (obj, options) ->
-#    result = ''
-#
-#    for key, value of obj
-#        result += options.fn key: key, value: value
-#
-#    result
-#, 'object'
-#
+  addDate: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      obj = fn data
+      [num, unit] = args
+    else
+      [obj, num, unit] = args
+    # format date
+    initMoment()
+    m = moment obj
+    if m.isValid()
+      return m.add num, unit
+      .toDate()
+    # fallback
+    obj
 
+  subtract: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      obj = fn data
+      [num] = args
+    else
+      [obj, num] = args
+    # work with numbers
+    return Number(obj) - num
+
+  subtractDate: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      obj = fn data
+      [num, unit] = args
+    else
+      [obj, num, unit] = args
+    # format date
+    initMoment()
+    m = moment obj
+    if m.isValid()
+      return m.subtract num, unit
+      .toDate()
+    # fallback
+    obj
+
+
+  # ### Collection
+
+  iterate: ->
+    {args, fn, data} = argParse arguments
+    [obj] = args
+    result = ''
+    # array
+    if Array.isArray
+      for v, i in obj
+        result += fn util.expand util.clone(data),
+          value: v
+          index: i
+    # object
+    else
+      for k, v of obj
+        result += fn util.expand util.clone(data),
+          key: k
+          value: v
+    # return result
+    result
+
+  join: ->
+    {args} = argParse arguments
+    [obj, separator] = args
+    separator ?= ' '
+    # join
+    obj.join separator
+
+  length: ->
+    {args} = argParse arguments
+    [obj] = args
+    obj.length
 
 
 # Register Helper Methods

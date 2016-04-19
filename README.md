@@ -159,11 +159,11 @@ _Examples:_
 Format helpers
 -------------------------------------------------
 
-### format
+### date
 
 _Parameter:_
 
-- object - to be printed (alternatively given as content)
+- date - to be printed (alternatively given as content)
 - format (string) - defining the display format
 - locale (string) - additionally specify a locale to use
 
@@ -178,11 +178,26 @@ _Examples:_
     {{#format "LL"}}2016-01-20{{/dateFormat}}
     # January 18, 2016
 
-See the description of [moment.js](http://momentjs.com/docs/#/displaying/) and
-[numeral.js](http://numeraljs.com/) for the possible format strings.
+See the description of [moment.js](http://momentjs.com/docs/#/displaying/) for
+the possible format strings.
 
 The language for the date format can be given as last argument (two letter code).
 
+### format
+
+_Parameter:_
+
+- number - to be printed (alternatively given as content)
+- format (string) - defining the display format
+- locale (string) - additionally specify a locale to use
+
+_Examples:_
+
+
+See the description of [numeral.js](http://numeraljs.com/) for the possible format
+strings.
+
+The language for the number format can be given as last argument (two letter code).
 
 ### unit
 
@@ -223,36 +238,113 @@ Math helpers
 -------------------------------------------------
 
 ### add
-### subtract
 
-**dateAdd**
+_Parameter:_
 
-Parameter:
+- base - to be changed (alternatively given as content)
+- number - value to be added
+
+_Examples:_
+
+    {{#add 1}}15{{/add 1}}
+    # 16
+
+### addDate
+
+_Parameter:_
 
 - date - to be changed (alternatively given as content)
-- count - number of interval units (negative to go back)
-- interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+- number - value to be added
+- unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
 
-Examples:
+_Examples:_
 
-    {{#dateFormat "LL"}}{{dateAdd date 1 "month"}}{{/dateFormat}}
+    {{#format "LL"}}{{add "1974-01-23" 1 "month"}}{{/format}}
     # February 23, 1974
 
+    {{#add 1}}15{{/add 1}}
+    # 16
+
+### subtract
+
+_Parameter:_
+
+- object - to be changed (alternatively given as content)
+- number - value to be added
+- unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+
+_Examples:_
+
+    {{#format "LL"}}{{subtract "1974-01-23" 1 "month"}}{{/format}}
+    # December 23, 1973
+
+    {{#subtract 1}}15{{/subtract 1}}
+    # 14
+
+### subtract
+
+_Parameter:_
+
+- object - to be changed (alternatively given as content)
+- number - value to be added
+- unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+
+_Examples:_
+
+    {{#format "LL"}}{{subtract "1974-01-23" 1 "month"}}{{/format}}
+    # December 23, 1973
+
+    {{#subtract 1}}15{{/subtract 1}}
+    # 14
 
 
 Collection helpers
 -------------------------------------------------
 
-### index
-### withIndex
-### eachIndex start, stop
-### join delimiter
+### interate
+
+_Examples:_
+
+    # list = ['a', 'b', 'c']
+    {{#iterate list}}
+    {{index}}: {{value}}
+    {{/iterate}}
+    # 0: a
+    # 1: b
+    # 2: c
+
+    # list = {a: 1, b: 2, c: 3}
+    {{#iterate list}}
+    {{key}}: {{value}}
+    {{/iterate}}
+    # a: 1
+    # b: 2
+    # c: 3
+
+### join
+
+_Parameter:_
+
+- array - to be joined
+- separator - to be used to join elements
+
+_Examples:_
+
+    # list = [1, 2, 3]
+    {{join list}}
+    # 1 2 3
+
+    # list = [1, 2, 3]
+    {{join list "-"}}
+    # 1-2-3
+
 ### length
 
-### property
-### withProperty
-### eachProperty
+_Examples:_
 
+    # list = [1, 2, 3]
+    {{length list}}
+    # 3
 
 
 License
