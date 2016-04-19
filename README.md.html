@@ -56,24 +56,88 @@
         <a href="#comparison-helper">Comparison helper</a>
       </div>
 
-      <div class="heading h2">
-        <a href="#array-helpers">Array helpers</a>
-      </div>
-
-      <div class="heading h2">
-        <a href="#object-helpers">Object helpers</a>
+      <div class="heading h3">
+        <a href="#is">is</a>
       </div>
 
       <div class="heading h2">
         <a href="#string-helpers">String helpers</a>
       </div>
 
-      <div class="heading h2">
-        <a href="#date-helpers">Date helpers</a>
+      <div class="heading h3">
+        <a href="#lowercase">lowercase</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#uppercase">uppercase</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#capitalizefirst">capitalizeFirst</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#capitalizeeach">capitalizeEach</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#shorten">shorten</a>
       </div>
 
       <div class="heading h2">
-        <a href="#number-helpers">Number helpers</a>
+        <a href="#format-helpers">Format helpers</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#format">format</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#math-helpers">Math helpers</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#add">add</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#subtract">subtract</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#collection-helpers">Collection helpers</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#index">index</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#withindex">withIndex</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#eachindex-start-stop">eachIndex start, stop</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#join-delimiter">join delimiter</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#length">length</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#property">property</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#withproperty">withProperty</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#eachproperty">eachProperty</a>
       </div>
 
       <div class="heading h2">
@@ -141,7 +205,12 @@ module:</p>
 Comparison helper
   </h2>
 </div>
-<p><strong>is</strong></p>
+<div class="pilwrap" id="is">
+  <h3>
+    <a href="#is" name="is" class="pilcrow"></a>
+is
+  </h3>
+</div>
 <p>Given one argument, is acts exactly like <code>if</code>:</p>
 <pre><code>{{#is x}} ... {{else}} ... {{/is}}
 </code></pre>
@@ -161,33 +230,18 @@ Comparison helper
 </ul>
 <p>If you use this helper with an object or array as it's first parameter it will
 base the calculation on the number of entries.</p>
-<div class="pilwrap" id="array-helpers">
-  <h2>
-    <a href="#array-helpers" name="array-helpers" class="pilcrow"></a>
-Array helpers
-  </h2>
-</div>
-<p><strong>index</strong>
-<strong>withIndex</strong>
-<strong>eachIndex</strong> start, stop
-<strong>join</strong> delimiter
-<strong>length</strong></p>
-<div class="pilwrap" id="object-helpers">
-  <h2>
-    <a href="#object-helpers" name="object-helpers" class="pilcrow"></a>
-Object helpers
-  </h2>
-</div>
-<p><strong>property</strong>
-<strong>withProperty</strong>
-<strong>eachProperty</strong></p>
 <div class="pilwrap" id="string-helpers">
   <h2>
     <a href="#string-helpers" name="string-helpers" class="pilcrow"></a>
 String helpers
   </h2>
 </div>
-<p><strong>lowercase</strong></p>
+<div class="pilwrap" id="lowercase">
+  <h3>
+    <a href="#lowercase" name="lowercase" class="pilcrow"></a>
+lowercase
+  </h3>
+</div>
 <p>Turns a string to lowercase.</p>
 <p>Usage:</p>
 <pre><code>{{lowercase &quot;THIS SHOULD BE LOWERCASE&quot;}}
@@ -195,7 +249,12 @@ String helpers
 <p>Result:</p>
 <pre><code>this should be lowercase
 </code></pre>
-<p><strong>uppercase</strong></p>
+<div class="pilwrap" id="uppercase">
+  <h3>
+    <a href="#uppercase" name="uppercase" class="pilcrow"></a>
+uppercase
+  </h3>
+</div>
 <p>Turns a string to uppercase.</p>
 <p>Usage:</p>
 <pre><code>{{uppercase &quot;this should be lowercase&quot;}}
@@ -203,7 +262,12 @@ String helpers
 <p>Result:</p>
 <pre><code>THIS SHOULD BE LOWERCASE
 </code></pre>
-<p><strong>capitalizeFirst</strong></p>
+<div class="pilwrap" id="capitalizefirst">
+  <h3>
+    <a href="#capitalizefirst" name="capitalizefirst" class="pilcrow"></a>
+capitalizeFirst
+  </h3>
+</div>
 <p>Capitalizes the first word in a string.</p>
 <p>Usage:</p>
 <pre><code>{{lowercase &quot;this should be lowercase&quot;}}
@@ -211,7 +275,12 @@ String helpers
 <p>Result:</p>
 <pre><code>This should be lowercase
 </code></pre>
-<p><strong>capitalizeEach</strong></p>
+<div class="pilwrap" id="capitalizeeach">
+  <h3>
+    <a href="#capitalizeeach" name="capitalizeeach" class="pilcrow"></a>
+capitalizeEach
+  </h3>
+</div>
 <p>Capitalizes each word in a string.</p>
 <p>Usage:</p>
 <pre><code>{{lowercase &quot;this should be lowercase&quot;}}
@@ -219,7 +288,12 @@ String helpers
 <p>Result:</p>
 <pre><code>This Should Be Lowercase
 </code></pre>
-<p><strong>shorten</strong></p>
+<div class="pilwrap" id="shorten">
+  <h3>
+    <a href="#shorten" name="shorten" class="pilcrow"></a>
+shorten
+  </h3>
+</div>
 <p>This will shorten the given text and add ellipsis if it is too long. This is done
 word aware.</p>
 <pre><code>{{truncate &quot;this should be lowercase&quot; 18}}
@@ -227,11 +301,17 @@ word aware.</p>
 <p>The parameters are the text to shorten and the maximum length to use.</p>
 <pre><code>this should be...
 </code></pre>
-<div class="pilwrap" id="date-helpers">
+<div class="pilwrap" id="format-helpers">
   <h2>
-    <a href="#date-helpers" name="date-helpers" class="pilcrow"></a>
-Date helpers
+    <a href="#format-helpers" name="format-helpers" class="pilcrow"></a>
+Format helpers
   </h2>
+</div>
+<div class="pilwrap" id="format">
+  <h3>
+    <a href="#format" name="format" class="pilcrow"></a>
+format
+  </h3>
 </div>
 <p><strong>dateFormat</strong></p>
 <p>Parameter:</p>
@@ -251,23 +331,6 @@ Date helpers
 the possible format strings.</p>
 <p>The language for the date format can be set by using <code>moment.locale 'de'</code> or any
 other locale before executing the handlebars template.</p>
-<p><strong>dateAdd</strong></p>
-<p>Parameter:</p>
-<ul>
-<li>date - to be changed (alternatively given as content)</li>
-<li>count - number of interval units (negative to go back)</li>
-<li>interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
-</ul>
-<p>Examples:</p>
-<pre><code>{{#dateFormat &quot;LL&quot;}}{{dateAdd date 1 &quot;month&quot;}}{{/dateFormat}}
-# February 23, 1974
-</code></pre>
-<div class="pilwrap" id="number-helpers">
-  <h2>
-    <a href="#number-helpers" name="number-helpers" class="pilcrow"></a>
-Number helpers
-  </h2>
-</div>
 <p><strong>unitFormat</strong></p>
 <p>Formats a value with unit.</p>
 <p>Parameter:</p>
@@ -287,6 +350,89 @@ x = 1234567
 {{unitFormat x &quot;mm&quot; &quot;m&quot;}}   # 1230 m
 {{unitFormat x &quot;mm&quot; &quot;m&quot; 4}} # 1235 m
 </code></pre>
+<div class="pilwrap" id="math-helpers">
+  <h2>
+    <a href="#math-helpers" name="math-helpers" class="pilcrow"></a>
+Math helpers
+  </h2>
+</div>
+<div class="pilwrap" id="add">
+  <h3>
+    <a href="#add" name="add" class="pilcrow"></a>
+add
+  </h3>
+</div>
+<div class="pilwrap" id="subtract">
+  <h3>
+    <a href="#subtract" name="subtract" class="pilcrow"></a>
+subtract
+  </h3>
+</div>
+<p><strong>dateAdd</strong></p>
+<p>Parameter:</p>
+<ul>
+<li>date - to be changed (alternatively given as content)</li>
+<li>count - number of interval units (negative to go back)</li>
+<li>interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
+</ul>
+<p>Examples:</p>
+<pre><code>{{#dateFormat &quot;LL&quot;}}{{dateAdd date 1 &quot;month&quot;}}{{/dateFormat}}
+# February 23, 1974
+</code></pre>
+<div class="pilwrap" id="collection-helpers">
+  <h2>
+    <a href="#collection-helpers" name="collection-helpers" class="pilcrow"></a>
+Collection helpers
+  </h2>
+</div>
+<div class="pilwrap" id="index">
+  <h3>
+    <a href="#index" name="index" class="pilcrow"></a>
+index
+  </h3>
+</div>
+<div class="pilwrap" id="withindex">
+  <h3>
+    <a href="#withindex" name="withindex" class="pilcrow"></a>
+withIndex
+  </h3>
+</div>
+<div class="pilwrap" id="eachindex-start-stop">
+  <h3>
+    <a href="#eachindex-start-stop" name="eachindex-start-stop" class="pilcrow"></a>
+eachIndex start, stop
+  </h3>
+</div>
+<div class="pilwrap" id="join-delimiter">
+  <h3>
+    <a href="#join-delimiter" name="join-delimiter" class="pilcrow"></a>
+join delimiter
+  </h3>
+</div>
+<div class="pilwrap" id="length">
+  <h3>
+    <a href="#length" name="length" class="pilcrow"></a>
+length
+  </h3>
+</div>
+<div class="pilwrap" id="property">
+  <h3>
+    <a href="#property" name="property" class="pilcrow"></a>
+property
+  </h3>
+</div>
+<div class="pilwrap" id="withproperty">
+  <h3>
+    <a href="#withproperty" name="withproperty" class="pilcrow"></a>
+withProperty
+  </h3>
+</div>
+<div class="pilwrap" id="eachproperty">
+  <h3>
+    <a href="#eachproperty" name="eachproperty" class="pilcrow"></a>
+eachProperty
+  </h3>
+</div>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>
