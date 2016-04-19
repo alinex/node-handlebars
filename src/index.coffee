@@ -124,29 +124,42 @@ helper =
       m.locale locale if locale
       return m.format format ? 'MMM Do, YYYY'
     # format numbers
+    if format
+      numeral ?= require 'numeral'
+      if locale
+        try
+          numeral.language locale, require "numeral/languages/#{locale}"
+          numeral.language locale
+      obj = numeral(obj).format format
+      numeral.language 'en' if locale
+    obj
+
+  unit: ->
+    {args, fn, data} = argParse arguments
+    if fn
+      num = fn data
+      [from, to, format, locale] = args
+    else
+      [num, from, to, format, locale] = args
+    format ?= '0.00'
+    # change unit
+    math ?= require 'mathjs'
+    num = "#{num}#{from}" if from
+    value = math.unit num
+    value = value.to to if to
+    value = value.format()
+    # format value
     numeral ?= require 'numeral'
     if locale
       try
         numeral.language locale, require "numeral/languages/#{locale}"
         numeral.language locale
-    value = numeral(obj).format format
+    [v, p] = value.split /[ ]/
+    value = numeral(v).format(format) + ' ' + p
     numeral.language 'en' if locale
     value
 
-
-  unitFormat: ->
-    {args} = argParse arguments
-    num = args.shift()
-    from = args.shift() if args.length and typeof num is 'number'
-    to = args.shift() if args.length and typeof args[0] is 'string'
-    precision = args.shift() if args.length
-    # format value
-    math ?= require 'mathjs'
-    num = "#{num}#{from}" if from
-    value = math.unit num
-    value = value.to to if to
-    value.format precision ? 3
-
+  # ### Math helper
 
   # ### dateAdd
   #

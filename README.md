@@ -150,11 +150,10 @@ _Parameter:_
 * test to modify
 * (integer) max number oof characters
 
+_Examples:_
+
     {{truncate "this should be lowercase" 18}}
-
-The parameters are the text to shorten and the maximum length to use.
-
-    this should be...
+    # this should be...
 
 
 Format helpers
@@ -162,18 +161,20 @@ Format helpers
 
 ### format
 
-Parameter:
+_Parameter:_
 
 - object - to be printed (alternatively given as content)
 - format (string) - defining the display format
 - locale (string) - additionally specify a locale to use
 
-Examples:
+_Examples:_
 
     {{format date "MMMM YYYY"}}
     # January 2016
+
     {{format date "LL" "de"}}
     # 18. January 2016
+
     {{#format "LL"}}2016-01-20{{/dateFormat}}
     # January 18, 2016
 
@@ -185,27 +186,37 @@ The language for the date format can be given as last argument (two letter code)
 
 ### unit
 
-**unitFormat**
-
 Formats a value with unit.
 
-Parameter:
+_Parameter:_
 
 - number - as numeric value or string with unit
 - unit - the numeric value is given
 - toUnit - unit to use
-- precision - numeric value 1..
+- format (string) - defining the display format
+- locale (string) - additionally specify a locale to use
 
-Examples:
+You can call it without the last parameters but don't forget one in the middle.
+
+_Examples:_
 
     x = '1234567mm'
-    {{unitFormat x}}            # 1.23 km
+    {{unit x}}            # 1.23 km
 
-    x = 1234567
-    {{unitFormat x "mm"}}       # 1.23 km
-    {{unitFormat x "mm" "km"}}  # 1.23 km
-    {{unitFormat x "mm" "m"}}   # 1230 m
-    {{unitFormat x "mm" "m" 4}} # 1235 m
+    {{unit 1234567 "mm"}}       
+    # 1.23 km
+
+    {{unit 1234567 "mm" "km"}}
+    # 1.23 km
+
+    {{unit 1234567 "mm" "m"}}
+    # 1235 m
+
+    {{unit 1234567 "mm" "km" "0.0"}}
+    # 1.2 km
+
+    {{unit 1234567 "mm" "km" "0.0" "de"}}
+    # 1,2 km
 
 
 Math helpers

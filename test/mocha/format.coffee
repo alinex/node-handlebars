@@ -26,19 +26,11 @@ describe "format helper", ->
     test.equal '{{format "1974-01-23" "LL" "de"}}', context, '23. Januar 1974'
 
 
-  it "should add date interval", ->
-    context =
-      date: new Date('1974-01-23')
-    test.equal '{{#format "LL"}}{{dateAdd date 1 "month"}}{{/format}}',
-    context, 'February 23, 1974'
-    test.equal '{{#format "LL"}}{{dateAdd date -1 "month"}}{{/format}}',
-    context, 'December 23, 1973'
-    test.equal '{{#format "LL"}}{{#dateAdd 1 "month"}}1974-01-23{{/dateAdd}}{{/format}}',
-    context, 'February 23, 1974'
-
   it "should allow unit format", ->
-    test.equal '{{unitFormat x}}', {x: '1234567mm'}, '1.23 km'
-    test.equal '{{unitFormat x "mm"}}', {x: 1234567}, '1.23 km'
-    test.equal '{{unitFormat x "mm" "km"}}', {x: 1234567}, '1.23 km'
-    test.equal '{{unitFormat x "mm" "m"}}', {x: 1234567}, '1230 m'
-    test.equal '{{unitFormat x "mm" "m" 4}}', {x: 1234567}, '1235 m'
+    test.equal '{{unit x}}', {x: '1234567mm'}, '1.23 km'
+    test.equal '{{unit x "mm"}}', {x: 1234567}, '1.23 km'
+    test.equal '{{unit x "mm" "km"}}', {x: 1234567}, '1.23 km'
+    test.equal '{{unit x "mm" "km" "0.000"}}', {x: 1234567}, '1.235 km'
+    test.equal '{{unit x "mm" "km" "0.000" "de"}}', {x: 1234567}, '1,235 km'
+    test.equal '{{unit x "mm" "m" "0"}}', {x: 1234567}, '1235 m'
+    test.equal '{{#unit}}1234567mm{{/unit}}', context, '1.23 km'
