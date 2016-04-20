@@ -44,6 +44,23 @@ describe "format helper", ->
     it "should keep unsupported objects untouched", ->
       test.equal '{{format obj}}', {obj: new Error 1}, 'Error: 1'
 
+  describe "i18n", ->
+
+    i18n = require 'i18n'
+    i18n.configure
+      defaultLocale: 'en'
+      directory: __dirname + '/../data/locale'
+      objectNotation: true
+
+    it "should show international text", ->
+      test.equal '{{i18n "button.go"}}', null, 'Go'
+
+    it "should show international text with context", ->
+      test.equal '{{i18n "counter:counting to %d" 5}}', null, 'counting to 5'
+
+    it "should show international text in other language", ->
+      test.equal '{{i18n "button.go" null "de"}}', null, 'Los'
+
   describe "unit", ->
 
     it "should allow unit format", ->

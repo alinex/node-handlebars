@@ -8,10 +8,11 @@
 
 # Node modules
 # -------------------------------------------------
-moment = null # load if needed
+moment = null # load on demand
 chrono = null # load on demand
 numeral = null # load on demand
-math = null # load if needed
+math = null # load on demand
+i18n = null # load on demand
 # alinex modules
 util = require 'alinex-util'
 
@@ -170,6 +171,18 @@ helper =
     value = numeral(v).format(format) + ' ' + p
     numeral.language 'en' if locale
     value
+
+  i18n: ->
+    {args} = argParse arguments
+    [text, context, locale] = args
+    # format
+    i18n ?= require 'i18n'
+    if locale
+      return i18n.__
+        phrase: text
+        locale: locale
+      , context
+    i18n.__ text, context
 
   # ### Math helper
 

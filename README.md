@@ -193,11 +193,49 @@ _Parameter:_
 
 _Examples:_
 
+    {{format 123.45 "0.0"}}
+    # 123.5
+
+    {{format 123.45 "0.0" "de"}}
+    # 123,5
+
+    {{#format "0.0"}}123.45{{/format}}
+    # 123.5
 
 See the description of [numeral.js](http://numeraljs.com/) for the possible format
 strings.
 
 The language for the number format can be given as last argument (two letter code).
+
+### i18n
+
+Support internationalization, but only if configured before using the
+[i18n](https://github.com/mashpie/i18n-node) package like:
+
+``` coffee
+i18n = require 'i18n'
+i18n.configure
+  defaultLocale: 'en'
+  directory: __dirname + '/../var/locale'
+  objectNotation: true
+```
+
+_Parameter:_
+
+- text - the text id or original text to be translated
+- context - object with context
+- locale - optional locale, changed from the current one
+
+_Examples:_
+
+    {{i18n "button.go"}}
+    # Go
+
+    {{i18n "button.go" null "de"}}
+    # Los
+
+    {{i18n "results" 6 "de"}}
+    # 6 Ergebnisse
 
 ### unit
 
