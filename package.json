@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "alinex-builder": "1.x",
-    "chai": "^2.3.0",
+    "chai": "^3.5.0",
     "chai-datetime": "^1.4.1"
   },
   "optionalDependencies": {},
