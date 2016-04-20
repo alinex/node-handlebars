@@ -238,7 +238,7 @@ helper =
     [obj] = args
     result = ''
     # array
-    if Array.isArray
+    if Array.isArray obj
       for v, i in obj
         result += fn util.expand util.clone(data),
           value: v
@@ -256,14 +256,24 @@ helper =
     {args} = argParse arguments
     [obj, separator] = args
     separator ?= ' '
-    # join
-    obj.join separator
+    # array
+    if Array.isArray obj
+      return obj.join separator
+    # object
+    if typeof obj is 'object'
+      return Object.keys(obj).join separator
+    obj
 
-  length: ->
+  count: ->
     {args} = argParse arguments
     [obj] = args
-    obj.length
-
+    # array
+    if Array.isArray obj
+      return obj.length
+    # object
+    if typeof obj is 'object'
+      return Object.keys(obj).length
+    obj
 
 # Register Helper Methods
 # ----------------------------------------------------------------

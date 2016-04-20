@@ -338,12 +338,20 @@ _Examples:_
     {{join list "-"}}
     # 1-2-3
 
-### length
+    # list = {a: 1, b: 2, c: 3}
+    {{join list}}
+    # a b c
+
+### count
 
 _Examples:_
 
     # list = [1, 2, 3]
-    {{length list}}
+    {{count list}}
+    # 3
+
+    # list = {a: 1, b: 2, c: 3}
+    {{count list}}
     # 3
 
 
