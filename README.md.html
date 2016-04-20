@@ -89,6 +89,10 @@
       </div>
 
       <div class="heading h3">
+        <a href="#date">date</a>
+      </div>
+
+      <div class="heading h3">
         <a href="#format">format</a>
       </div>
 
@@ -105,7 +109,15 @@
       </div>
 
       <div class="heading h3">
+        <a href="#adddate">addDate</a>
+      </div>
+
+      <div class="heading h3">
         <a href="#subtract">subtract</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#subtract-1">subtract</a>
       </div>
 
       <div class="heading h2">
@@ -113,35 +125,15 @@
       </div>
 
       <div class="heading h3">
-        <a href="#index">index</a>
+        <a href="#interate">interate</a>
       </div>
 
       <div class="heading h3">
-        <a href="#withindex">withIndex</a>
+        <a href="#join">join</a>
       </div>
 
       <div class="heading h3">
-        <a href="#eachindex-start-stop">eachIndex start, stop</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#join-delimiter">join delimiter</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#length">length</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#property">property</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#withproperty">withProperty</a>
-      </div>
-
-      <div class="heading h3">
-        <a href="#eachproperty">eachProperty</a>
+        <a href="#count">count</a>
       </div>
 
       <div class="heading h2">
@@ -318,15 +310,15 @@ word aware.</p>
 Format helpers
   </h2>
 </div>
-<div class="pilwrap" id="format">
+<div class="pilwrap" id="date">
   <h3>
-    <a href="#format" name="format" class="pilcrow"></a>
-format
+    <a href="#date" name="date" class="pilcrow"></a>
+date
   </h3>
 </div>
 <p><em>Parameter:</em></p>
 <ul>
-<li>object - to be printed (alternatively given as content)</li>
+<li>date - to be printed (alternatively given as content)</li>
 <li>format (string) - defining the display format</li>
 <li>locale (string) - additionally specify a locale to use</li>
 </ul>
@@ -340,9 +332,25 @@ format
 {{#format &quot;LL&quot;}}2016-01-20{{/dateFormat}}
 # January 18, 2016
 </code></pre>
-<p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> and
-<a href="http://numeraljs.com/">numeral.js</a> for the possible format strings.</p>
+<p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> for
+the possible format strings.</p>
 <p>The language for the date format can be given as last argument (two letter code).</p>
+<div class="pilwrap" id="format">
+  <h3>
+    <a href="#format" name="format" class="pilcrow"></a>
+format
+  </h3>
+</div>
+<p><em>Parameter:</em></p>
+<ul>
+<li>number - to be printed (alternatively given as content)</li>
+<li>format (string) - defining the display format</li>
+<li>locale (string) - additionally specify a locale to use</li>
+</ul>
+<p><em>Examples:</em></p>
+<p>See the description of <a href="http://numeraljs.com/">numeral.js</a> for the possible format
+strings.</p>
+<p>The language for the number format can be given as last argument (two letter code).</p>
 <div class="pilwrap" id="unit">
   <h3>
     <a href="#unit" name="unit" class="pilcrow"></a>
@@ -390,22 +398,71 @@ Math helpers
 add
   </h3>
 </div>
+<p><em>Parameter:</em></p>
+<ul>
+<li>base - to be changed (alternatively given as content)</li>
+<li>number - value to be added</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code>{{#add 1}}15{{/add 1}}
+# 16
+</code></pre>
+<div class="pilwrap" id="adddate">
+  <h3>
+    <a href="#adddate" name="adddate" class="pilcrow"></a>
+addDate
+  </h3>
+</div>
+<p><em>Parameter:</em></p>
+<ul>
+<li>date - to be changed (alternatively given as content)</li>
+<li>number - value to be added</li>
+<li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code>{{#format &quot;LL&quot;}}{{add &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
+# February 23, 1974
+
+{{#add 1}}15{{/add 1}}
+# 16
+</code></pre>
 <div class="pilwrap" id="subtract">
   <h3>
     <a href="#subtract" name="subtract" class="pilcrow"></a>
 subtract
   </h3>
 </div>
-<p><strong>dateAdd</strong></p>
-<p>Parameter:</p>
+<p><em>Parameter:</em></p>
 <ul>
-<li>date - to be changed (alternatively given as content)</li>
-<li>count - number of interval units (negative to go back)</li>
-<li>interval - type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
+<li>object - to be changed (alternatively given as content)</li>
+<li>number - value to be added</li>
+<li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
 </ul>
-<p>Examples:</p>
-<pre><code>{{#dateFormat &quot;LL&quot;}}{{dateAdd date 1 &quot;month&quot;}}{{/dateFormat}}
-# February 23, 1974
+<p><em>Examples:</em></p>
+<pre><code>{{#format &quot;LL&quot;}}{{subtract &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
+# December 23, 1973
+
+{{#subtract 1}}15{{/subtract 1}}
+# 14
+</code></pre>
+<div class="pilwrap" id="subtract-1">
+  <h3>
+    <a href="#subtract-1" name="subtract-1" class="pilcrow"></a>
+subtract
+  </h3>
+</div>
+<p><em>Parameter:</em></p>
+<ul>
+<li>object - to be changed (alternatively given as content)</li>
+<li>number - value to be added</li>
+<li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code>{{#format &quot;LL&quot;}}{{subtract &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
+# December 23, 1973
+
+{{#subtract 1}}15{{/subtract 1}}
+# 14
 </code></pre>
 <div class="pilwrap" id="collection-helpers">
   <h2>
@@ -413,54 +470,68 @@ subtract
 Collection helpers
   </h2>
 </div>
-<div class="pilwrap" id="index">
+<div class="pilwrap" id="interate">
   <h3>
-    <a href="#index" name="index" class="pilcrow"></a>
-index
+    <a href="#interate" name="interate" class="pilcrow"></a>
+interate
   </h3>
 </div>
-<div class="pilwrap" id="withindex">
+<p><em>Examples:</em></p>
+<pre><code># list = ['a', 'b', 'c']
+{{#iterate list}}
+{{index}}: {{value}}
+{{/iterate}}
+# 0: a
+# 1: b
+# 2: c
+
+# list = {a: 1, b: 2, c: 3}
+{{#iterate list}}
+{{key}}: {{value}}
+{{/iterate}}
+# a: 1
+# b: 2
+# c: 3
+</code></pre>
+<div class="pilwrap" id="join">
   <h3>
-    <a href="#withindex" name="withindex" class="pilcrow"></a>
-withIndex
+    <a href="#join" name="join" class="pilcrow"></a>
+join
   </h3>
 </div>
-<div class="pilwrap" id="eachindex-start-stop">
+<p><em>Parameter:</em></p>
+<ul>
+<li>array - to be joined</li>
+<li>separator - to be used to join elements</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code># list = [1, 2, 3]
+{{join list}}
+# 1 2 3
+
+# list = [1, 2, 3]
+{{join list &quot;-&quot;}}
+# 1-2-3
+
+# list = {a: 1, b: 2, c: 3}
+{{join list}}
+# a b c
+</code></pre>
+<div class="pilwrap" id="count">
   <h3>
-    <a href="#eachindex-start-stop" name="eachindex-start-stop" class="pilcrow"></a>
-eachIndex start, stop
+    <a href="#count" name="count" class="pilcrow"></a>
+count
   </h3>
 </div>
-<div class="pilwrap" id="join-delimiter">
-  <h3>
-    <a href="#join-delimiter" name="join-delimiter" class="pilcrow"></a>
-join delimiter
-  </h3>
-</div>
-<div class="pilwrap" id="length">
-  <h3>
-    <a href="#length" name="length" class="pilcrow"></a>
-length
-  </h3>
-</div>
-<div class="pilwrap" id="property">
-  <h3>
-    <a href="#property" name="property" class="pilcrow"></a>
-property
-  </h3>
-</div>
-<div class="pilwrap" id="withproperty">
-  <h3>
-    <a href="#withproperty" name="withproperty" class="pilcrow"></a>
-withProperty
-  </h3>
-</div>
-<div class="pilwrap" id="eachproperty">
-  <h3>
-    <a href="#eachproperty" name="eachproperty" class="pilcrow"></a>
-eachProperty
-  </h3>
-</div>
+<p><em>Examples:</em></p>
+<pre><code># list = [1, 2, 3]
+{{count list}}
+# 3
+
+# list = {a: 1, b: 2, c: 3}
+{{count list}}
+# 3
+</code></pre>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>
