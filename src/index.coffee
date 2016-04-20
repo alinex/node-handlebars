@@ -138,10 +138,9 @@ helper =
     # format date
     initMoment()
     m = moment obj
-    if m.isValid()
+    if m.isValid
       m.locale locale if locale
-      return m.format format ? 'MMM Do, YYYY'
-    # fallback
+      return m.format format ? 'YYYY-MM-DD'
     obj
 
   unit: ->
@@ -153,11 +152,14 @@ helper =
       [num, from, to, format, locale] = args
     format ?= '0.00'
     # change unit
-    math ?= require 'mathjs'
-    num = "#{num}#{from}" if from
-    value = math.unit num
-    value = value.to to if to
-    value = value.format()
+    try
+      math ?= require 'mathjs'
+      num = "#{num}#{from}" if from
+      value = math.unit num
+      value = value.to to if to
+      value = value.format()
+    catch error
+      return error
     # format value
     numeral ?= require 'numeral'
     if locale
@@ -268,7 +270,7 @@ helper =
     {args} = argParse arguments
     [obj] = args
     # array
-    if Array.isArray obj
+    if obj?.length?
       return obj.length
     # object
     if typeof obj is 'object'

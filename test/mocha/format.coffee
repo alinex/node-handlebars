@@ -30,12 +30,19 @@ describe "format helper", ->
     it "should format dates intl with specified language", ->
       test.equal '{{date "1974-01-23" "LL" "de"}}', context, '23. Januar 1974'
 
+    it "should keep unsupported objects untouched", ->
+      test.equal '{{date obj}}', {obj: new Error 1}, moment().format('YYYY-MM-DD')
+#      test.equal '{{date obj}}', {obj: 'hello'}, moment().format('YYYY-MM-DD')
+
   describe "format", ->
 
     it "should format numbers", ->
       test.equal '{{format 123.45 "0.0"}}', context, '123.5'
       test.equal '{{format 123.45 "0.0" "de"}}', context, '123,5'
       test.equal '{{#format "0.0"}}123.45{{/format}}', context, '123.5'
+
+    it "should keep unsupported objects untouched", ->
+      test.equal '{{format obj}}', {obj: new Error 1}, 'Error: 1'
 
   describe "unit", ->
 
@@ -47,3 +54,6 @@ describe "format helper", ->
       test.equal '{{unit x "mm" "km" "0.000" "de"}}', {x: 1234567}, '1,235 km'
       test.equal '{{unit x "mm" "m" "0"}}', {x: 1234567}, '1235 m'
       test.equal '{{#unit}}1234567mm{{/unit}}', context, '1.23 km'
+
+#    it "should keep unsupported objects untouched", ->
+#      test.equal '{{unit obj}}', {obj: new Error 1}, 'Error: 1'

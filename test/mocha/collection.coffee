@@ -53,6 +53,9 @@ describe "collection helper", ->
           c: 3
       test.equal '{{join list "-"}}', context, 'a-b-c'
 
+    it "should keep unsupported objects untouched", ->
+      test.equal '{{join obj}}', {obj: "hello"}, 'hello'
+
   describe "count", ->
 
     it "should count elements of array", ->
@@ -67,3 +70,9 @@ describe "collection helper", ->
           b: 2
           c: 3
       test.equal '{{count list}}', context, '3'
+
+    it "should count characters", ->
+      test.equal '{{count obj}}', {obj: "hello"}, '5'
+
+    it "should keep unsupported objects untouched", ->
+      test.equal '{{join obj}}', {obj: 5}, '5'
