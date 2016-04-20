@@ -97,6 +97,10 @@
       </div>
 
       <div class="heading h3">
+        <a href="#i18n">i18n</a>
+      </div>
+
+      <div class="heading h3">
         <a href="#unit">unit</a>
       </div>
 
@@ -348,9 +352,48 @@ format
 <li>locale (string) - additionally specify a locale to use</li>
 </ul>
 <p><em>Examples:</em></p>
+<pre><code>{{format 123.45 &quot;0.0&quot;}}
+# 123.5
+
+{{format 123.45 &quot;0.0&quot; &quot;de&quot;}}
+# 123,5
+
+{{#format &quot;0.0&quot;}}123.45{{/format}}
+# 123.5
+</code></pre>
 <p>See the description of <a href="http://numeraljs.com/">numeral.js</a> for the possible format
 strings.</p>
 <p>The language for the number format can be given as last argument (two letter code).</p>
+<div class="pilwrap" id="i18n">
+  <h3>
+    <a href="#i18n" name="i18n" class="pilcrow"></a>
+i18n
+  </h3>
+</div>
+<p>Support internationalization, but only if configured before using the
+<a href="https://github.com/mashpie/i18n-node">i18n</a> package like:</p>
+<pre><code class="coffee">i18n = <span class="hljs-built_in">require</span> <span class="hljs-string">'i18n'</span>
+i18n.configure
+  <span class="hljs-attribute">defaultLocale</span>: <span class="hljs-string">'en'</span>
+  <span class="hljs-attribute">directory</span>: __dirname + <span class="hljs-string">'/../var/locale'</span>
+  <span class="hljs-attribute">objectNotation</span>: <span class="hljs-literal">true</span>
+</code></pre>
+<p><em>Parameter:</em></p>
+<ul>
+<li>text - the text id or original text to be translated</li>
+<li>context - object with context</li>
+<li>locale - optional locale, changed from the current one</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code>{{i18n &quot;button.go&quot;}}
+# Go
+
+{{i18n &quot;button.go&quot; null &quot;de&quot;}}
+# Los
+
+{{i18n &quot;results&quot; 6 &quot;de&quot;}}
+# 6 Ergebnisse
+</code></pre>
 <div class="pilwrap" id="unit">
   <h3>
     <a href="#unit" name="unit" class="pilcrow"></a>
