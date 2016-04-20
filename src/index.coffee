@@ -240,13 +240,13 @@ helper =
     # array
     if Array.isArray obj
       for v, i in obj
-        result += fn util.expand util.clone(data),
+        result += fn util.extend util.clone(data),
           value: v
           index: i
     # object
     else
       for k, v of obj
-        result += fn util.expand util.clone(data),
+        result += fn util.extend util.clone(data),
           key: k
           value: v
     # return result

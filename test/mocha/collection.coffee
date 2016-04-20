@@ -3,6 +3,28 @@ test = require '../test'
 
 describe "collection helper", ->
 
+  describe "iterate", ->
+
+    it "should step over array", ->
+      context =
+        list: ['a', 'b', 'c']
+      test.equal """
+        {{#iterate list}}
+        {{index}}: {{value}}
+        {{/iterate}}
+        """
+      , context, '0: a\n1: b\n2: c\n'
+
+    it "should step over object", ->
+      context =
+        list: {a: 1, b: 2, c: 3}
+      test.equal """
+        {{#iterate list}}
+        {{key}}: {{value}}
+        {{/iterate}}
+        """
+      , context, 'a: 1\nb: 2\nc: 3\n'
+
   describe "join", ->
 
     it "should join elements of array", ->
