@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.1 (2016-04-29)
+-------------------------------------------------
+- Upgrade builder package.
+
 Version 1.1.0 (2016-04-20)
 -------------------------------------------------
 - Add i18n helper.
