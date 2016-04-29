@@ -6,6 +6,7 @@
   "private": false,
   "keywords": [
     "handlebars",
+    "helper",
     "template"
   ],
   "homepage": "http://alinex.github.io/node-handlebars/",
@@ -23,23 +24,23 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/builder -c compile --uglify",
-    "test": "node_modules/.bin/builder -c test"
+    "prepublish": "node_modules/.bin/builder compile --uglify",
+    "test": "node_modules/.bin/builder test"
   },
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {
-    "alinex-util": "^2.0.3",
+    "alinex-util": "^2.1.0",
     "chrono-node": "^1.2.1",
     "handlebars": "^4.0.5",
     "i18n": "^0.8.2",
-    "mathjs": "^3.2.0",
+    "mathjs": "^3.2.1",
     "moment": "^2.13.0",
     "numeral": "^1.5.3"
   },
   "devDependencies": {
-    "alinex-builder": "1.x",
+    "alinex-builder": "^2.0.3",
     "chai": "^3.5.0",
     "chai-datetime": "^1.4.1"
   },
