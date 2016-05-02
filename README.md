@@ -155,6 +155,19 @@ _Examples:_
     {{truncate "this should be lowercase" 18}}
     # this should be...
 
+### nobr
+
+Transforms all spaces in non breaking spaces (UTF-8) for display. This helps in
+displaying table data in narrow html view.
+
+_Parameter:_
+
+* test to modify
+
+_Examples:_
+
+    {{nobr "15 886"}}
+
 
 Format helpers
 -------------------------------------------------

@@ -99,6 +99,10 @@ helper =
     [text, len] = args
     util.string.shorten text, len
 
+  nobr: ->
+    {args} = argParse arguments
+    [text] = args
+    text.replace /[ ]/g, "\u00A0"
 
   # ### Format
 

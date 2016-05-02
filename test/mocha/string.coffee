@@ -17,3 +17,6 @@ describe "string helper", ->
 
   it "should shorten text", ->
     test.equal '{{shorten "this should be lowercase" 18}}', null, 'this should be...'
+
+  it "should change spaces so that they don't break", ->
+    test.equal '{{nobr "15 668"}}', null, '15\u00A0668'
