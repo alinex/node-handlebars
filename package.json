@@ -1,6 +1,6 @@
 {
   "name": "alinex-handlebars",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Helpers collection for the handlebars template engine.",
   "copyright": "Alexander Schilling 2016",
   "private": false,
@@ -40,7 +40,7 @@
     "numeral": "^1.5.3"
   },
   "devDependencies": {
-    "alinex-builder": "^2.0.3",
+    "alinex-builder": "^2.0.4",
     "chai": "^3.5.0",
     "chai-datetime": "^1.4.1"
   },

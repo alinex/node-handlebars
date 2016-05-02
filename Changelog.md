@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.2 (2016-05-02)
+-------------------------------------------------
+- Add nobr helper.
+- Added v6 for travis but didn't activate, yet.
+
 Version 1.1.1 (2016-04-29)
 -------------------------------------------------
 - Upgrade builder package.
