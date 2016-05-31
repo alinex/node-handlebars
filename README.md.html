@@ -7,7 +7,7 @@
   <script src="doc-filelist.js"></script>
   <script>
     var relativeDir = "";
-    var thisFile = "home/alex/github/node-handlebars/README.md";
+    var thisFile = "README.md";
     var defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
@@ -82,6 +82,10 @@
 
       <div class="heading h3">
         <a href="#shorten">shorten</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#nobr">nobr</a>
       </div>
 
       <div class="heading h2">
@@ -184,7 +188,7 @@ Install
 <p>And update it to the latest version later:</p>
 <pre><code class="sh">npm update alinex-handlebars --save
 </code></pre>
-<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
+<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
 <div class="pilwrap" id="usage">
   <h2>
     <a href="#usage" name="usage" class="pilcrow"></a>
@@ -308,6 +312,21 @@ word aware.</p>
 <pre><code>{{truncate &quot;this should be lowercase&quot; 18}}
 # this should be...
 </code></pre>
+<div class="pilwrap" id="nobr">
+  <h3>
+    <a href="#nobr" name="nobr" class="pilcrow"></a>
+nobr
+  </h3>
+</div>
+<p>Transforms all spaces in non breaking spaces (UTF-8) for display. This helps in
+displaying table data in narrow html view.</p>
+<p><em>Parameter:</em></p>
+<ul>
+<li>test to modify</li>
+</ul>
+<p><em>Examples:</em></p>
+<pre><code>{{nobr &quot;15 886&quot;}}
+</code></pre>
 <div class="pilwrap" id="format-helpers">
   <h2>
     <a href="#format-helpers" name="format-helpers" class="pilcrow"></a>
@@ -374,9 +393,9 @@ i18n
 <a href="https://github.com/mashpie/i18n-node">i18n</a> package like:</p>
 <pre><code class="coffee">i18n = <span class="hljs-built_in">require</span> <span class="hljs-string">'i18n'</span>
 i18n.configure
-  <span class="hljs-attribute">defaultLocale</span>: <span class="hljs-string">'en'</span>
-  <span class="hljs-attribute">directory</span>: __dirname + <span class="hljs-string">'/../var/locale'</span>
-  <span class="hljs-attribute">objectNotation</span>: <span class="hljs-literal">true</span>
+  defaultLocale: <span class="hljs-string">'en'</span>
+  directory: __dirname + <span class="hljs-string">'/../var/locale'</span>
+  objectNotation: <span class="hljs-literal">true</span>
 </code></pre>
 <p><em>Parameter:</em></p>
 <ul>

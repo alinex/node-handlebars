@@ -7,7 +7,7 @@
   <script src="../doc-filelist.js"></script>
   <script>
     var relativeDir = "../";
-    var thisFile = "home/alex/github/node-handlebars/src/index.coffee";
+    var thisFile = "src/index.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
@@ -202,8 +202,8 @@ Get arguments
         <td class="code highlight">
           <pre class="coffeescript"><span class="hljs-function"><span class="hljs-title">argParse</span> = <span class="hljs-params">(args)</span> -&gt;</span>
   args = [].slice.call(args)
-  options = args[args.length-<span class="hljs-number">1</span>]
-  options.args = args[<span class="hljs-number">0.</span>.-<span class="hljs-number">2</span>]
+  options = args[args.length<span class="hljs-number">-1</span>]
+  options.args = args[<span class="hljs-number">0.</span>.<span class="hljs-number">-2</span>]
   options.data = options.data.root
   options
 
@@ -223,7 +223,7 @@ Comparison
         </td>
         <td class="code highlight">
           <pre class="coffeescript">
-  <span class="hljs-attribute">is</span>: <span class="hljs-function">-&gt;</span>
+  is: <span class="hljs-function">-&gt;</span>
     {args, fn, inverse, data} = argParse arguments
     <span class="hljs-keyword">if</span> args.length <span class="hljs-keyword">is</span> <span class="hljs-number">2</span>
       [left, right] = args
@@ -298,26 +298,31 @@ String
         </td>
         <td class="code highlight">
           <pre class="coffeescript">
-  <span class="hljs-attribute">lowercase</span>: <span class="hljs-function">-&gt;</span>
+  lowercase: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     args[<span class="hljs-number">0</span>].toLowerCase()
 
-  <span class="hljs-attribute">uppercase</span>: <span class="hljs-function">-&gt;</span>
+  uppercase: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     args[<span class="hljs-number">0</span>].toUpperCase()
 
-  <span class="hljs-attribute">capitalizeFirst</span>: <span class="hljs-function">-&gt;</span>
+  capitalizeFirst: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     args[<span class="hljs-number">0</span>].charAt(<span class="hljs-number">0</span>).toUpperCase() + args[<span class="hljs-number">0</span>].slice(<span class="hljs-number">1</span>)
 
-  <span class="hljs-attribute">capitalizeEach</span>: <span class="hljs-function">-&gt;</span>
+  capitalizeEach: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     args[<span class="hljs-number">0</span>].replace <span class="hljs-regexp">/\w\S*/g</span>, <span class="hljs-function"><span class="hljs-params">(txt)</span> -&gt;</span> txt.charAt(<span class="hljs-number">0</span>).toUpperCase() + txt.substr(<span class="hljs-number">1</span>)
 
-  <span class="hljs-attribute">shorten</span>: <span class="hljs-function">-&gt;</span>
+  shorten: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     [text, len] = args
-    util.string.shorten text, len</pre>
+    util.string.shorten text, len
+
+  nobr: <span class="hljs-function">-&gt;</span>
+    {args} = argParse arguments
+    [text] = args
+    text.replace <span class="hljs-regexp">/[ ]/g</span>, <span class="hljs-string">"\u00A0"</span></pre>
         </td>
       </tr>
     
@@ -353,7 +358,7 @@ Format
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-attribute">format</span>: <span class="hljs-function">-&gt;</span>
+          <pre class="coffeescript">  format: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -382,7 +387,7 @@ Format
       numeral.language <span class="hljs-string">'en'</span> <span class="hljs-keyword">if</span> locale
     obj
 
-  <span class="hljs-attribute">date</span>: <span class="hljs-function">-&gt;</span>
+  date: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -408,7 +413,7 @@ Format
       <span class="hljs-keyword">return</span> m.format format ? <span class="hljs-string">'YYYY-MM-DD'</span>
     obj
 
-  <span class="hljs-attribute">unit</span>: <span class="hljs-function">-&gt;</span>
+  unit: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       num = fn data
@@ -458,7 +463,7 @@ Format
     numeral.language <span class="hljs-string">'en'</span> <span class="hljs-keyword">if</span> locale
     value
 
-  <span class="hljs-attribute">i18n</span>: <span class="hljs-function">-&gt;</span>
+  i18n: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     [text, context, locale] = args</pre>
         </td>
@@ -476,8 +481,8 @@ Format
           <pre class="coffeescript">    i18n ?= <span class="hljs-built_in">require</span> <span class="hljs-string">'i18n'</span>
     <span class="hljs-keyword">if</span> locale
       <span class="hljs-keyword">return</span> i18n.__
-        <span class="hljs-attribute">phrase</span>: text
-        <span class="hljs-attribute">locale</span>: locale
+        phrase: text
+        locale: locale
       , context
     i18n.__ text, context</pre>
         </td>
@@ -514,7 +519,7 @@ dateAdd
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-attribute">add</span>: <span class="hljs-function">-&gt;</span>
+          <pre class="coffeescript">  add: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -535,7 +540,7 @@ dateAdd
         <td class="code highlight">
           <pre class="coffeescript">    <span class="hljs-keyword">return</span> Number(obj) + num
 
-  <span class="hljs-attribute">addDate</span>: <span class="hljs-function">-&gt;</span>
+  addDate: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -573,7 +578,7 @@ dateAdd
         <td class="code highlight">
           <pre class="coffeescript">    obj
 
-  <span class="hljs-attribute">subtract</span>: <span class="hljs-function">-&gt;</span>
+  subtract: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -594,7 +599,7 @@ dateAdd
         <td class="code highlight">
           <pre class="coffeescript">    <span class="hljs-keyword">return</span> Number(obj) - num
 
-  <span class="hljs-attribute">subtractDate</span>: <span class="hljs-function">-&gt;</span>
+  subtractDate: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     <span class="hljs-keyword">if</span> fn
       obj = fn data
@@ -646,7 +651,7 @@ Collection
         </td>
         <td class="code highlight">
           <pre class="coffeescript">
-  <span class="hljs-attribute">iterate</span>: <span class="hljs-function">-&gt;</span>
+  iterate: <span class="hljs-function">-&gt;</span>
     {args, fn, data} = argParse arguments
     [obj] = args
     result = <span class="hljs-string">''</span></pre>
@@ -665,8 +670,8 @@ Collection
           <pre class="coffeescript">    <span class="hljs-keyword">if</span> Array.isArray obj
       <span class="hljs-keyword">for</span> v, i <span class="hljs-keyword">in</span> obj
         result += fn util.extend util.clone(data),
-          <span class="hljs-attribute">value</span>: v
-          <span class="hljs-attribute">index</span>: i</pre>
+          value: v
+          index: i</pre>
         </td>
       </tr>
     
@@ -682,8 +687,8 @@ Collection
           <pre class="coffeescript">    <span class="hljs-keyword">else</span>
       <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">of</span> obj
         result += fn util.extend util.clone(data),
-          <span class="hljs-attribute">key</span>: k
-          <span class="hljs-attribute">value</span>: v</pre>
+          key: k
+          value: v</pre>
         </td>
       </tr>
     
@@ -698,7 +703,7 @@ Collection
         <td class="code highlight">
           <pre class="coffeescript">    result
 
-  <span class="hljs-attribute">join</span>: <span class="hljs-function">-&gt;</span>
+  join: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     [obj, separator] = args
     separator ?= <span class="hljs-string">' '</span></pre>
@@ -732,7 +737,7 @@ Collection
       <span class="hljs-keyword">return</span> Object.keys(obj).join separator
     obj
 
-  <span class="hljs-attribute">count</span>: <span class="hljs-function">-&gt;</span>
+  count: <span class="hljs-function">-&gt;</span>
     {args} = argParse arguments
     [obj] = args</pre>
         </td>
