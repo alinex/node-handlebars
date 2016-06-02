@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.2.0 (2016-06-02)
+-------------------------------------------------
+- Make default test verbose.
+- Upgraded packages fs, util, chrono and builder.
+- Add include helper.
+- Fix documentation style and examples.
+
 Version 1.1.2 (2016-05-02)
 -------------------------------------------------
 - Add nobr helper.
