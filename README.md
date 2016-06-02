@@ -1,7 +1,7 @@
 Package: alinex-handlebars
 =================================================
 
-[![Build Status](https://travis-ci.org/alinex/node-handlebars.svg?branch=master)](https://travis-ci.org/alinex/node-handlebars)
+[![Build Status](https://travis-ci.org/alinex/node-handlebars.svg)](https://travis-ci.org/alinex/node-handlebars)
 [![Coverage Status](https://coveralls.io/repos/alinex/node-handlebars/badge.png?branch=master)](https://coveralls.io/r/alinex/node-handlebars?branch=master)
 [![Dependency Status](https://gemnasium.com/alinex/node-handlebars.png)](https://gemnasium.com/alinex/node-handlebars)
 
