@@ -216,8 +216,8 @@ is
   </h3>
 </div>
 <p>Given one argument, is acts exactly like <code>if</code>:</p>
-<pre><code>{{#is x}} ... {{else}} ... {{/is}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> x}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
+</span></code></pre>
 <p>Given two arguments, <code>is</code> compares the two are equal:</p>
 <pre><code>{{#is x y}} ... {{else}} ... {{/is}}
 </code></pre>
@@ -346,13 +346,13 @@ date
 <li>locale (string) - additionally specify a locale to use</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{format date &quot;MMMM YYYY&quot;}}
+<pre><code>{{date mydate &quot;MMMM YYYY&quot;}}
 # January 2016
 
-{{format date &quot;LL&quot; &quot;de&quot;}}
+{{date mydate &quot;LL&quot; &quot;de&quot;}}
 # 18. January 2016
 
-{{#format &quot;LL&quot;}}2016-01-20{{/dateFormat}}
+{{#date &quot;LL&quot;}}2016-01-20{{/date}}
 # January 18, 2016
 </code></pre>
 <p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> for
