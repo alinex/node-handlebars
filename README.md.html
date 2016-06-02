@@ -145,6 +145,14 @@
       </div>
 
       <div class="heading h2">
+        <a href="#other-helpers">Other helpers</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#include">include</a>
+      </div>
+
+      <div class="heading h2">
         <a href="#license">License</a>
       </div>
 
@@ -588,6 +596,26 @@ count
 </span><span class="hljs-template-variable">{{count list}}</span><span class="xml">
 # 3
 </span></code></pre>
+<div class="pilwrap" id="other-helpers">
+  <h2>
+    <a href="#other-helpers" name="other-helpers" class="pilcrow"></a>
+Other helpers
+  </h2>
+</div>
+<div class="pilwrap" id="include">
+  <h3>
+    <a href="#include" name="include" class="pilcrow"></a>
+include
+  </h3>
+</div>
+<p>This is used to include another file as it is.</p>
+<blockquote>
+<p>It is not interpreted as handlebars template itself but output as is.</p>
+</blockquote>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{include "myfile.txt" }}</span><span class="xml">
+</span></code></pre>
+<p>This will search for the file from the current directory. So best to use absolute
+paths here.</p>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>
