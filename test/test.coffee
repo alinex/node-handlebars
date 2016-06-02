@@ -9,3 +9,8 @@ exports.equal = (template, data, goal) ->
   fn = handlebars.compile template
   result = fn data
   expect(result).to.equal goal
+
+exports.contain = (template, data, goal) ->
+  fn = handlebars.compile template
+  result = fn data
+  expect(result).to.contain goal

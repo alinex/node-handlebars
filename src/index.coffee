@@ -15,6 +15,7 @@ math = null # load on demand
 i18n = null # load on demand
 # alinex modules
 util = require 'alinex-util'
+fs = require 'alinex-fs'
 
 
 initMoment = ->
@@ -190,13 +191,6 @@ helper =
 
   # ### Math helper
 
-  # ### dateAdd
-  #
-  # Add interval to date.
-  #
-  #     date = new Date()
-  #     {{dateAdd date 1 "month"}}
-  #     {{#dateAdd 1 "month"}}2016-01-18{{/dateAdd}}
   add: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -293,6 +287,17 @@ helper =
     if typeof obj is 'object'
       return Object.keys(obj).length
     obj
+
+  # ### Other
+
+  include: ->
+    {args} = argParse arguments
+    [file] = args
+    try
+      return fs.readFileSync file
+    catch error
+      return error.message
+
 
 # Register Helper Methods
 # ----------------------------------------------------------------

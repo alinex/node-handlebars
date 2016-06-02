@@ -378,7 +378,6 @@ _Examples:_
 ```
 
 
-
 Collection helpers
 -------------------------------------------------
 
@@ -440,6 +439,23 @@ _Examples:_
 {{count list}}
 # 3
 ```
+
+
+Other helpers
+-------------------------------------------------
+
+### include
+
+This is used to include another file as it is.
+
+> It is not interpreted as handlebars template itself but output as is.
+
+``` handlebars
+{{include "myfile.txt" }}
+```
+
+This will search for the file from the current directory. So best to use absolute
+paths here.
 
 
 License
