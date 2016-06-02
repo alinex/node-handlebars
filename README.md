@@ -63,16 +63,22 @@ Comparison helper
 
 Given one argument, is acts exactly like `if`:
 
-    {{#is x}} ... {{else}} ... {{/is}}
+``` handlebars
+{{#is x}} ... {{else}} ... {{/is}}
+```
 
 Given two arguments, `is` compares the two are equal:
 
-    {{#is x y}} ... {{else}} ... {{/is}}
+``` handlebars
+{{#is x y}} ... {{else}} ... {{/is}}
+```
 
 Given three arguments, the second argument becomes the comparator:
 
-    {{#is x "not" y}} ... {{else}} ... {{/is}}
-    {{#is 5 ">=" 2}} ... {{else}} ... {{/is}}
+``` handlebars
+{{#is x "not" y}} ... {{else}} ... {{/is}}
+{{#is 5 ">=" 2}} ... {{else}} ... {{/is}}
+```
 
 The following comparators are supported:
 
@@ -84,7 +90,9 @@ The following comparators are supported:
 If you use this helper with an object or array as it's first parameter it will
 base the calculation on the number of entries.
 
-    {{#is list 3}} ... {{else}} ... {{/is}}
+``` handlebars
+{{#is list 3}} ... {{else}} ... {{/is}}
+```
 
 This will use the if part if the array list contains exactly 3 entries.
 
@@ -98,7 +106,9 @@ Turns a string to lowercase.
 
 Usage:
 
-    {{lowercase "THIS SHOULD BE LOWERCASE"}}
+``` handlebars
+{{lowercase "THIS SHOULD BE LOWERCASE"}}
+```
 
 Result:
 
@@ -110,7 +120,9 @@ Turns a string to uppercase.
 
 Usage:
 
-    {{uppercase "this should be lowercase"}}
+``` handlebars
+{{uppercase "this should be lowercase"}}
+```
 
 Result:
 
@@ -122,7 +134,9 @@ Capitalizes the first word in a string.
 
 Usage:
 
-    {{lowercase "this should be lowercase"}}
+``` handlebars
+{{lowercase "this should be lowercase"}}
+```
 
 Result:
 
@@ -134,7 +148,9 @@ Capitalizes each word in a string.
 
 Usage:
 
-    {{lowercase "this should be lowercase"}}
+``` handlebars
+{{lowercase "this should be lowercase"}}
+```
 
 Result:
 
@@ -152,8 +168,10 @@ _Parameter:_
 
 _Examples:_
 
-    {{truncate "this should be lowercase" 18}}
-    # this should be...
+``` handlebars
+{{truncate "this should be lowercase" 18}}
+# this should be...
+```
 
 ### nobr
 
@@ -166,7 +184,9 @@ _Parameter:_
 
 _Examples:_
 
-    {{nobr "15 886"}}
+``` handlebars
+{{nobr "15 886"}}
+```
 
 
 Format helpers
@@ -182,14 +202,16 @@ _Parameter:_
 
 _Examples:_
 
-    {{format date "MMMM YYYY"}}
-    # January 2016
+``` handlebars
+{{date mydate "MMMM YYYY"}}
+# January 2016
 
-    {{format date "LL" "de"}}
-    # 18. January 2016
+{{date mydate "LL" "de"}}
+# 18. January 2016
 
-    {{#format "LL"}}2016-01-20{{/dateFormat}}
-    # January 18, 2016
+{{#date "LL"}}2016-01-20{{/date}}
+# January 18, 2016
+```
 
 See the description of [moment.js](http://momentjs.com/docs/#/displaying/) for
 the possible format strings.
@@ -206,14 +228,16 @@ _Parameter:_
 
 _Examples:_
 
-    {{format 123.45 "0.0"}}
-    # 123.5
+``` handlebars
+{{format 123.45 "0.0"}}
+# 123.5
 
-    {{format 123.45 "0.0" "de"}}
-    # 123,5
+{{format 123.45 "0.0" "de"}}
+# 123,5
 
-    {{#format "0.0"}}123.45{{/format}}
-    # 123.5
+{{#format "0.0"}}123.45{{/format}}
+# 123.5
+```
 
 See the description of [numeral.js](http://numeraljs.com/) for the possible format
 strings.
@@ -241,14 +265,16 @@ _Parameter:_
 
 _Examples:_
 
-    {{i18n "button.go"}}
-    # Go
+``` handlebars
+{{i18n "button.go"}}
+# Go
 
-    {{i18n "button.go" null "de"}}
-    # Los
+{{i18n "button.go" null "de"}}
+# Los
 
-    {{i18n "results" 6 "de"}}
-    # 6 Ergebnisse
+{{i18n "results" 6 "de"}}
+# 6 Ergebnisse
+```
 
 ### unit
 
@@ -266,23 +292,25 @@ You can call it without the last parameters but don't forget one in the middle.
 
 _Examples:_
 
-    x = '1234567mm'
-    {{unit x}}            # 1.23 km
+``` handlebars
+x = '1234567mm'
+{{unit x}}            # 1.23 km
 
-    {{unit 1234567 "mm"}}       
-    # 1.23 km
+{{unit 1234567 "mm"}}       
+# 1.23 km
 
-    {{unit 1234567 "mm" "km"}}
-    # 1.23 km
+{{unit 1234567 "mm" "km"}}
+# 1.23 km
 
-    {{unit 1234567 "mm" "m"}}
-    # 1235 m
+{{unit 1234567 "mm" "m"}}
+# 1235 m
 
-    {{unit 1234567 "mm" "km" "0.0"}}
-    # 1.2 km
+{{unit 1234567 "mm" "km" "0.0"}}
+# 1.2 km
 
-    {{unit 1234567 "mm" "km" "0.0" "de"}}
-    # 1,2 km
+{{unit 1234567 "mm" "km" "0.0" "de"}}
+# 1,2 km
+```
 
 
 Math helpers
@@ -297,8 +325,10 @@ _Parameter:_
 
 _Examples:_
 
-    {{#add 1}}15{{/add 1}}
-    # 16
+``` handlebars
+{{#add 1}}15{{/add 1}}
+# 16
+```
 
 ### addDate
 
@@ -310,27 +340,13 @@ _Parameter:_
 
 _Examples:_
 
-    {{#format "LL"}}{{add "1974-01-23" 1 "month"}}{{/format}}
-    # February 23, 1974
+``` handlebars
+{{#format "LL"}}{{addDate "1974-01-23" 1 "month"}}{{/format}}
+# February 23, 1974
 
-    {{#add 1}}15{{/add 1}}
-    # 16
-
-### subtract
-
-_Parameter:_
-
-- object - to be changed (alternatively given as content)
-- number - value to be added
-- unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
-
-_Examples:_
-
-    {{#format "LL"}}{{subtract "1974-01-23" 1 "month"}}{{/format}}
-    # December 23, 1973
-
-    {{#subtract 1}}15{{/subtract 1}}
-    # 14
+{{#addDate 1}}15{{/addDate 1}}
+# 16
+```
 
 ### subtract
 
@@ -342,11 +358,25 @@ _Parameter:_
 
 _Examples:_
 
-    {{#format "LL"}}{{subtract "1974-01-23" 1 "month"}}{{/format}}
-    # December 23, 1973
+``` handlebars
+{{#subtract 1}}15{{/subtract 1}}
+# 14
+```
+### subtractDate
 
-    {{#subtract 1}}15{{/subtract 1}}
-    # 14
+_Parameter:_
+
+- object - to be changed (alternatively given as content)
+- number - value to be added
+- unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...
+
+_Examples:_
+
+``` handlebars
+{{#format "LL"}}{{subtractDate "1974-01-23" 1 "month"}}{{/format}}
+# December 23, 1973
+```
+
 
 
 Collection helpers
@@ -356,21 +386,23 @@ Collection helpers
 
 _Examples:_
 
-    # list = ['a', 'b', 'c']
-    {{#iterate list}}
-    {{index}}: {{value}}
-    {{/iterate}}
-    # 0: a
-    # 1: b
-    # 2: c
+``` handlebars
+# list = ['a', 'b', 'c']
+{{#iterate list}}
+{{index}}: {{value}}
+{{/iterate}}
+# 0: a
+# 1: b
+# 2: c
 
-    # list = {a: 1, b: 2, c: 3}
-    {{#iterate list}}
-    {{key}}: {{value}}
-    {{/iterate}}
-    # a: 1
-    # b: 2
-    # c: 3
+# list = {a: 1, b: 2, c: 3}
+{{#iterate list}}
+{{key}}: {{value}}
+{{/iterate}}
+# a: 1
+# b: 2
+# c: 3
+```
 
 ### join
 
@@ -381,29 +413,33 @@ _Parameter:_
 
 _Examples:_
 
-    # list = [1, 2, 3]
-    {{join list}}
-    # 1 2 3
+``` handlebars
+# list = [1, 2, 3]
+{{join list}}
+# 1 2 3
 
-    # list = [1, 2, 3]
-    {{join list "-"}}
-    # 1-2-3
+# list = [1, 2, 3]
+{{join list "-"}}
+# 1-2-3
 
-    # list = {a: 1, b: 2, c: 3}
-    {{join list}}
-    # a b c
+# list = {a: 1, b: 2, c: 3}
+{{join list}}
+# a b c
+```
 
 ### count
 
 _Examples:_
 
-    # list = [1, 2, 3]
-    {{count list}}
-    # 3
+``` handlebars
+# list = [1, 2, 3]
+{{count list}}
+# 3
 
-    # list = {a: 1, b: 2, c: 3}
-    {{count list}}
-    # 3
+# list = {a: 1, b: 2, c: 3}
+{{count list}}
+# 3
+```
 
 
 License
