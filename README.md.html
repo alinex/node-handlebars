@@ -125,7 +125,7 @@
       </div>
 
       <div class="heading h3">
-        <a href="#subtract-1">subtract</a>
+        <a href="#subtractdate">subtractDate</a>
       </div>
 
       <div class="heading h2">
@@ -219,12 +219,12 @@ is
 <pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> x}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
 </span></code></pre>
 <p>Given two arguments, <code>is</code> compares the two are equal:</p>
-<pre><code>{{#is x y}} ... {{else}} ... {{/is}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> x y}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
+</span></code></pre>
 <p>Given three arguments, the second argument becomes the comparator:</p>
-<pre><code>{{#is x &quot;not&quot; y}} ... {{else}} ... {{/is}}
-{{#is 5 &quot;&gt;=&quot; 2}} ... {{else}} ... {{/is}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> x <span class="hljs-string">"not"</span> y}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> 5 <span class="hljs-string">"&gt;="</span> 2}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
+</span></code></pre>
 <p>The following comparators are supported:</p>
 <ul>
 <li><code>==</code> or (no comparator) - equality checking</li>
@@ -234,8 +234,8 @@ is
 </ul>
 <p>If you use this helper with an object or array as it's first parameter it will
 base the calculation on the number of entries.</p>
-<pre><code>{{#is list 3}} ... {{else}} ... {{/is}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">is</span> list 3}}</span><span class="xml"> ... </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"> ... </span><span class="hljs-template-tag">{{/<span class="hljs-name">is</span>}}</span><span class="xml">
+</span></code></pre>
 <p>This will use the if part if the array list contains exactly 3 entries.</p>
 <div class="pilwrap" id="string-helpers">
   <h2>
@@ -251,8 +251,8 @@ lowercase
 </div>
 <p>Turns a string to lowercase.</p>
 <p>Usage:</p>
-<pre><code>{{lowercase &quot;THIS SHOULD BE LOWERCASE&quot;}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{lowercase "THIS SHOULD BE LOWERCASE"}}</span><span class="xml">
+</span></code></pre>
 <p>Result:</p>
 <pre><code>this should be lowercase
 </code></pre>
@@ -264,8 +264,8 @@ uppercase
 </div>
 <p>Turns a string to uppercase.</p>
 <p>Usage:</p>
-<pre><code>{{uppercase &quot;this should be lowercase&quot;}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{uppercase "this should be lowercase"}}</span><span class="xml">
+</span></code></pre>
 <p>Result:</p>
 <pre><code>THIS SHOULD BE LOWERCASE
 </code></pre>
@@ -277,8 +277,8 @@ capitalizeFirst
 </div>
 <p>Capitalizes the first word in a string.</p>
 <p>Usage:</p>
-<pre><code>{{lowercase &quot;this should be lowercase&quot;}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{lowercase "this should be lowercase"}}</span><span class="xml">
+</span></code></pre>
 <p>Result:</p>
 <pre><code>This should be lowercase
 </code></pre>
@@ -290,8 +290,8 @@ capitalizeEach
 </div>
 <p>Capitalizes each word in a string.</p>
 <p>Usage:</p>
-<pre><code>{{lowercase &quot;this should be lowercase&quot;}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{lowercase "this should be lowercase"}}</span><span class="xml">
+</span></code></pre>
 <p>Result:</p>
 <pre><code>This Should Be Lowercase
 </code></pre>
@@ -309,9 +309,9 @@ word aware.</p>
 <li>(integer) max number oof characters</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{truncate &quot;this should be lowercase&quot; 18}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{truncate "this should be lowercase" 18}}</span><span class="xml">
 # this should be...
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="nobr">
   <h3>
     <a href="#nobr" name="nobr" class="pilcrow"></a>
@@ -325,8 +325,8 @@ displaying table data in narrow html view.</p>
 <li>test to modify</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{nobr &quot;15 886&quot;}}
-</code></pre>
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{nobr "15 886"}}</span><span class="xml">
+</span></code></pre>
 <div class="pilwrap" id="format-helpers">
   <h2>
     <a href="#format-helpers" name="format-helpers" class="pilcrow"></a>
@@ -346,15 +346,15 @@ date
 <li>locale (string) - additionally specify a locale to use</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{date mydate &quot;MMMM YYYY&quot;}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{date mydate "MMMM YYYY"}}</span><span class="xml">
 # January 2016
 
-{{date mydate &quot;LL&quot; &quot;de&quot;}}
+</span><span class="hljs-template-variable">{{date mydate "LL" "de"}}</span><span class="xml">
 # 18. January 2016
 
-{{#date &quot;LL&quot;}}2016-01-20{{/date}}
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">date</span> <span class="hljs-string">"LL"</span>}}</span><span class="xml">2016-01-20</span><span class="hljs-template-tag">{{/<span class="hljs-name">date</span>}}</span><span class="xml">
 # January 18, 2016
-</code></pre>
+</span></code></pre>
 <p>See the description of <a href="http://momentjs.com/docs/#/displaying/">moment.js</a> for
 the possible format strings.</p>
 <p>The language for the date format can be given as last argument (two letter code).</p>
@@ -371,15 +371,15 @@ format
 <li>locale (string) - additionally specify a locale to use</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{format 123.45 &quot;0.0&quot;}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{format 123.45 "0.0"}}</span><span class="xml">
 # 123.5
 
-{{format 123.45 &quot;0.0&quot; &quot;de&quot;}}
+</span><span class="hljs-template-variable">{{format 123.45 "0.0" "de"}}</span><span class="xml">
 # 123,5
 
-{{#format &quot;0.0&quot;}}123.45{{/format}}
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">format</span> <span class="hljs-string">"0.0"</span>}}</span><span class="xml">123.45</span><span class="hljs-template-tag">{{/<span class="hljs-name">format</span>}}</span><span class="xml">
 # 123.5
-</code></pre>
+</span></code></pre>
 <p>See the description of <a href="http://numeraljs.com/">numeral.js</a> for the possible format
 strings.</p>
 <p>The language for the number format can be given as last argument (two letter code).</p>
@@ -404,15 +404,15 @@ i18n.configure
 <li>locale - optional locale, changed from the current one</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{i18n &quot;button.go&quot;}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-variable">{{i18n "button.go"}}</span><span class="xml">
 # Go
 
-{{i18n &quot;button.go&quot; null &quot;de&quot;}}
+</span><span class="hljs-template-variable">{{i18n "button.go" null "de"}}</span><span class="xml">
 # Los
 
-{{i18n &quot;results&quot; 6 &quot;de&quot;}}
+</span><span class="hljs-template-variable">{{i18n "results" 6 "de"}}</span><span class="xml">
 # 6 Ergebnisse
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="unit">
   <h3>
     <a href="#unit" name="unit" class="pilcrow"></a>
@@ -430,24 +430,24 @@ unit
 </ul>
 <p>You can call it without the last parameters but don't forget one in the middle.</p>
 <p><em>Examples:</em></p>
-<pre><code>x = '1234567mm'
-{{unit x}}            # 1.23 km
+<pre><code class="handlebars"><span class="xml">x = '1234567mm'
+</span><span class="hljs-template-variable">{{unit x}}</span><span class="xml">            # 1.23 km
 
-{{unit 1234567 &quot;mm&quot;}}       
+</span><span class="hljs-template-variable">{{unit 1234567 "mm"}}</span><span class="xml">       
 # 1.23 km
 
-{{unit 1234567 &quot;mm&quot; &quot;km&quot;}}
+</span><span class="hljs-template-variable">{{unit 1234567 "mm" "km"}}</span><span class="xml">
 # 1.23 km
 
-{{unit 1234567 &quot;mm&quot; &quot;m&quot;}}
+</span><span class="hljs-template-variable">{{unit 1234567 "mm" "m"}}</span><span class="xml">
 # 1235 m
 
-{{unit 1234567 &quot;mm&quot; &quot;km&quot; &quot;0.0&quot;}}
+</span><span class="hljs-template-variable">{{unit 1234567 "mm" "km" "0.0"}}</span><span class="xml">
 # 1.2 km
 
-{{unit 1234567 &quot;mm&quot; &quot;km&quot; &quot;0.0&quot; &quot;de&quot;}}
+</span><span class="hljs-template-variable">{{unit 1234567 "mm" "km" "0.0" "de"}}</span><span class="xml">
 # 1,2 km
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="math-helpers">
   <h2>
     <a href="#math-helpers" name="math-helpers" class="pilcrow"></a>
@@ -466,9 +466,9 @@ add
 <li>number - value to be added</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{#add 1}}15{{/add 1}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">add</span> 1}}</span><span class="xml">15</span><span class="hljs-template-tag">{{/<span class="hljs-name">add</span> 1}}</span><span class="xml">
 # 16
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="adddate">
   <h3>
     <a href="#adddate" name="adddate" class="pilcrow"></a>
@@ -482,12 +482,12 @@ addDate
 <li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{#format &quot;LL&quot;}}{{add &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">format</span> <span class="hljs-string">"LL"</span>}}</span><span class="xml"></span><span class="hljs-template-variable">{{addDate "1974-01-23" 1 "month"}}</span><span class="xml"></span><span class="hljs-template-tag">{{/<span class="hljs-name">format</span>}}</span><span class="xml">
 # February 23, 1974
 
-{{#add 1}}15{{/add 1}}
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">addDate</span> 1}}</span><span class="xml">15</span><span class="hljs-template-tag">{{/<span class="hljs-name">addDate</span> 1}}</span><span class="xml">
 # 16
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="subtract">
   <h3>
     <a href="#subtract" name="subtract" class="pilcrow"></a>
@@ -501,16 +501,13 @@ subtract
 <li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{#format &quot;LL&quot;}}{{subtract &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
-# December 23, 1973
-
-{{#subtract 1}}15{{/subtract 1}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">subtract</span> 1}}</span><span class="xml">15</span><span class="hljs-template-tag">{{/<span class="hljs-name">subtract</span> 1}}</span><span class="xml">
 # 14
-</code></pre>
-<div class="pilwrap" id="subtract-1">
+</span></code></pre>
+<div class="pilwrap" id="subtractdate">
   <h3>
-    <a href="#subtract-1" name="subtract-1" class="pilcrow"></a>
-subtract
+    <a href="#subtractdate" name="subtractdate" class="pilcrow"></a>
+subtractDate
   </h3>
 </div>
 <p><em>Parameter:</em></p>
@@ -520,12 +517,9 @@ subtract
 <li>unit - (for dates only) type of interval steps like 'seconds', 'minutes', 'hours', 'days'...</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code>{{#format &quot;LL&quot;}}{{subtract &quot;1974-01-23&quot; 1 &quot;month&quot;}}{{/format}}
+<pre><code class="handlebars"><span class="xml"></span><span class="hljs-template-tag">{{#<span class="hljs-name">format</span> <span class="hljs-string">"LL"</span>}}</span><span class="xml"></span><span class="hljs-template-variable">{{subtractDate "1974-01-23" 1 "month"}}</span><span class="xml"></span><span class="hljs-template-tag">{{/<span class="hljs-name">format</span>}}</span><span class="xml">
 # December 23, 1973
-
-{{#subtract 1}}15{{/subtract 1}}
-# 14
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="collection-helpers">
   <h2>
     <a href="#collection-helpers" name="collection-helpers" class="pilcrow"></a>
@@ -539,22 +533,22 @@ interate
   </h3>
 </div>
 <p><em>Examples:</em></p>
-<pre><code># list = ['a', 'b', 'c']
-{{#iterate list}}
-{{index}}: {{value}}
-{{/iterate}}
+<pre><code class="handlebars"><span class="xml"># list = ['a', 'b', 'c']
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">iterate</span> list}}</span><span class="xml">
+</span><span class="hljs-template-variable">{{index}}</span><span class="xml">: </span><span class="hljs-template-variable">{{value}}</span><span class="xml">
+</span><span class="hljs-template-tag">{{/<span class="hljs-name">iterate</span>}}</span><span class="xml">
 # 0: a
 # 1: b
 # 2: c
 
 # list = {a: 1, b: 2, c: 3}
-{{#iterate list}}
-{{key}}: {{value}}
-{{/iterate}}
+</span><span class="hljs-template-tag">{{#<span class="hljs-name">iterate</span> list}}</span><span class="xml">
+</span><span class="hljs-template-variable">{{key}}</span><span class="xml">: </span><span class="hljs-template-variable">{{value}}</span><span class="xml">
+</span><span class="hljs-template-tag">{{/<span class="hljs-name">iterate</span>}}</span><span class="xml">
 # a: 1
 # b: 2
 # c: 3
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="join">
   <h3>
     <a href="#join" name="join" class="pilcrow"></a>
@@ -567,18 +561,18 @@ join
 <li>separator - to be used to join elements</li>
 </ul>
 <p><em>Examples:</em></p>
-<pre><code># list = [1, 2, 3]
-{{join list}}
+<pre><code class="handlebars"><span class="xml"># list = [1, 2, 3]
+</span><span class="hljs-template-variable">{{join list}}</span><span class="xml">
 # 1 2 3
 
 # list = [1, 2, 3]
-{{join list &quot;-&quot;}}
+</span><span class="hljs-template-variable">{{join list "-"}}</span><span class="xml">
 # 1-2-3
 
 # list = {a: 1, b: 2, c: 3}
-{{join list}}
+</span><span class="hljs-template-variable">{{join list}}</span><span class="xml">
 # a b c
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="count">
   <h3>
     <a href="#count" name="count" class="pilcrow"></a>
@@ -586,14 +580,14 @@ count
   </h3>
 </div>
 <p><em>Examples:</em></p>
-<pre><code># list = [1, 2, 3]
-{{count list}}
+<pre><code class="handlebars"><span class="xml"># list = [1, 2, 3]
+</span><span class="hljs-template-variable">{{count list}}</span><span class="xml">
 # 3
 
 # list = {a: 1, b: 2, c: 3}
-{{count list}}
+</span><span class="hljs-template-variable">{{count list}}</span><span class="xml">
 # 3
-</code></pre>
+</span></code></pre>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>
