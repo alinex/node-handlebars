@@ -31,8 +31,9 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "alinex-util": "^2.1.0",
-    "chrono-node": "^1.2.1",
+    "alinex-fs": "^2.0.1",
+    "alinex-util": "^2.2.0",
+    "chrono-node": "^1.2.3",
     "handlebars": "^4.0.5",
     "i18n": "^0.8.2",
     "mathjs": "^3.2.1",
@@ -40,7 +41,7 @@
     "numeral": "^1.5.3"
   },
   "devDependencies": {
-    "alinex-builder": "^2.0.4",
+    "alinex-builder": "^2.1.6",
     "chai": "^3.5.0",
     "chai-datetime": "^1.4.1"
   },
