@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.2.1 (2016-07-13)
+-------------------------------------------------
+- Fixed bug with is-helper not supporting the outer context in it's inner.
+- Make test for bug found in is handler.
+- Fix travis badge.
+
 Version 1.2.0 (2016-06-02)
 -------------------------------------------------
 - Make default test verbose.

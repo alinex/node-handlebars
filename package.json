@@ -1,6 +1,6 @@
 {
   "name": "alinex-handlebars",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Helpers collection for the handlebars template engine.",
   "copyright": "Alexander Schilling 2016",
   "private": false,
