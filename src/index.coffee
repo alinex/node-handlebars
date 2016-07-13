@@ -43,6 +43,7 @@ argParse = (args) ->
   options = args[args.length-1]
   options.args = args[0..-2]
   options.data = options.data.root
+  console.log options.args
   options
 
 helper =
@@ -51,6 +52,7 @@ helper =
 
   is: ->
     {args, fn, inverse, data} = argParse arguments
+    console.log data
     if args.length is 2
       [left, right] = args
       operator = '=='

@@ -15,6 +15,25 @@ describe "collection helper", ->
         """
       , context, '0: a\n1: b\n2: c\n'
 
+    it.only "should step over array (with included is check)", ->
+      context =
+        list: [0, 1, 2, 3, 4, 5]
+      test.equal """
+        {{#each list}}
+          {{this}}
+          {{#if this}}
+            {{this}} {{list}}
+          {{/if}}
+        {{/each}}
+        {{#iterate list}}
+          {{value}}
+          {{#is value ">" 2}}
+            {{value}} {{list}}
+          {{/is}}
+        {{/iterate}}
+        """
+      , context, '0: a\n1: b\n2: c\n'
+
     it "should step over object", ->
       context =
         list: {a: 1, b: 2, c: 3}
