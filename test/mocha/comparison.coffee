@@ -65,3 +65,33 @@ describe "conditions", ->
     test.equal '{{#is x y}} 1 {{else}} 2 {{/is}}', {x: {a: 1, b: 2}, y: 2}, ' 1 '
     test.equal '{{#is x y}} 1 {{else}} 2 {{/is}}', {x: {}, y: 1}, ' 2 '
     test.equal '{{#is x y}} 1 {{else}} 2 {{/is}}', {x: {a: 1, b: 2}, y: 1}, ' 2 '
+
+  it "should allow in each context", ->
+    context =
+      list: [0, 1, 2, 3, 4, 5]
+    test.equal """
+      {{#each list}}
+        {{#if this}}
+          if has {{this}}
+        {{/if}}
+        {{#is this}}
+          is has {{this}}
+        {{/is}}
+      {{/each}}
+      """
+    , context, '    if has 1\n    is has 1\n    if has 2\n    is has 2\n    if has 3\n    is has 3\n    if has 4\n    is has 4\n    if has 5\n    is has 5\n'
+
+  it "should allow in iterate context", ->
+    context =
+      list: [0, 1, 2, 3, 4, 5]
+    test.equal """
+      {{#iterate list}}
+        {{#if value}}
+          if has {{value}}
+        {{/if}}
+        {{#is value}}
+          is has {{value}}
+        {{/is}}
+      {{/iterate}}
+      """
+    , context, '    if has 1\n    is has 1\n    if has 2\n    is has 2\n    if has 3\n    is has 3\n    if has 4\n    is has 4\n    if has 5\n    is has 5\n'
