@@ -1,9 +1,7 @@
-# Domain name validation
-# =================================================
-
-# Check options:
-#
-# - `optional` - the value must not be present (will return null)
+###
+API Usage
+=================================================
+###
 
 
 # Node modules
@@ -18,32 +16,19 @@ util = require 'alinex-util'
 fs = require 'alinex-fs'
 
 
-initMoment = ->
-  return if moment
-  moment = require 'moment'
-  chrono ?= require 'chrono-node'
-  moment.createFromInputFallback = (config) ->
-    config._d = switch config._i.toLowerCase()
-      when 'now' then new Date()
-      else chrono.parseDate config._i
-
-
-# Handlebars Helper
+# External Methods
 # -------------------------------------------------
 
-# ### Get arguments
-# - name - name of the function
-# - args - the normal parameters
-# - hash - named parameters
-# - fn - content function in block helpers
-# - inverse - else part of block helpers
-# - data - current context
-argParse = (args) ->
-  args = [].slice.call(args)
-  options = args[args.length-1]
-  options.args = args[0..-2]
-  options.data = options.data.root
-  options
+###
+This method will add all the handlebars helper methods to the given handlebars
+instance.
+
+@param {Handlebars} handlebars instance
+###
+exports.register = (handlebars) ->
+  # register helper
+  for key, fn of helper
+    handlebars.registerHelper key, fn
 
 helper =
 
@@ -298,10 +283,28 @@ helper =
     catch error
       return error.message
 
+# Handlebars Helper
+# -------------------------------------------------
 
-# Register Helper Methods
-# ----------------------------------------------------------------
-exports.register = (handlebars) ->
-  # register helper
-  for key, fn of helper
-    handlebars.registerHelper key, fn
+initMoment = ->
+  return if moment
+  moment = require 'moment'
+  chrono ?= require 'chrono-node'
+  moment.createFromInputFallback = (config) ->
+    config._d = switch config._i.toLowerCase()
+      when 'now' then new Date()
+      else chrono.parseDate config._i
+
+# ### Get arguments
+# - name - name of the function
+# - args - the normal parameters
+# - hash - named parameters
+# - fn - content function in block helpers
+# - inverse - else part of block helpers
+# - data - current context
+argParse = (args) ->
+  args = [].slice.call(args)
+  options = args[args.length-1]
+  options.args = args[0..-2]
+  options.data = options.data.root
+  options

@@ -1,9 +1,36 @@
 Package: alinex-handlebars
 =================================================
 
-[![Build Status](https://travis-ci.org/alinex/node-handlebars.svg)](https://travis-ci.org/alinex/node-handlebars)
-[![Coverage Status](https://coveralls.io/repos/alinex/node-handlebars/badge.png?branch=master)](https://coveralls.io/r/alinex/node-handlebars?branch=master)
-[![Dependency Status](https://gemnasium.com/alinex/node-handlebars.png)](https://gemnasium.com/alinex/node-handlebars)
+[![GitHub watchers](
+  https://img.shields.io/github/watchers/alinex/node-handlebars.svg?style=social&label=Watch&maxAge=2592000)](
+  https://github.com/alinex/node-handlebars/subscription)<!-- {.hidden-small} -->
+[![GitHub stars](
+  https://img.shields.io/github/stars/alinex/node-handlebars.svg?style=social&label=Star&maxAge=2592000)](
+  https://github.com/alinex/node-handlebars)
+[![GitHub forks](
+  https://img.shields.io/github/forks/alinex/node-handlebars.svg?style=social&label=Fork&maxAge=2592000)](
+  https://github.com/alinex/node-handlebars)<!-- {.hidden-small} -->
+<!-- {p:.right} -->
+
+[![npm package](
+  https://img.shields.io/npm/v/alinex-handlebars.svg?maxAge=2592000&label=latest%20version)](
+  https://www.npmjs.com/package/alinex-handlebars)
+[![latest version](
+  https://img.shields.io/npm/l/alinex-handlebars.svg?maxAge=2592000)](
+  #license)<!-- {.hidden-small} -->
+[![Travis status](
+  https://img.shields.io/travis/alinex/node-handlebars.svg?maxAge=2592000&label=develop)](
+  https://travis-ci.org/alinex/node-handlebars)
+[![Coveralls status](
+  https://img.shields.io/coveralls/alinex/node-handlebars.svg?maxAge=2592000)](
+  https://coveralls.io/r/alinex/node-handlebars?branch=master)
+[![Gemnasium status](
+  https://img.shields.io/gemnasium/alinex/node-handlebars.svg?maxAge=2592000)](
+  https://gemnasium.com/alinex/node-handlebars)
+[![GitHub issues](
+  https://img.shields.io/github/issues/alinex/node-handlebars.svg?maxAge=2592000)](
+  https://github.com/alinex/node-handlebars/issues)<!-- {.hidden-small} -->
+
 
 This is a collection of helper methods extending the [handlebars](http://handlebarsjs.com/)
 template system.
@@ -12,8 +39,12 @@ template system.
 - easy to use
 - easy to integrate
 
-> It is one of the modules of the [Alinex Namespace](http://alinex.github.io/code.html)
-> following the code standards defined in the [General Docs](http://alinex.github.io/develop).
+> It is one of the modules of the [Alinex Namespace](https://alinex.github.io/code.html)
+> following the code standards defined in the [General Docs](https://alinex.github.io/develop).
+
+__Read the complete documentation under
+[https://alinex.github.io/node-handlebars](https://alinex.github.io/node-handlebars).__
+<!-- {p: .hidden} -->
 
 
 Install
@@ -56,12 +87,18 @@ require('alinex-handlebars').register handlebars
 That's all.
 
 
+
+
+
+
+
+
 Comparison helper
 -------------------------------------------------
 
 ### is
 
-Given one argument, is acts exactly like `if`:
+Given one argument, `is` acts exactly like `if`:
 
 ``` handlebars
 {{#is x}} ... {{else}} ... {{/is}}
