@@ -5,6 +5,12 @@ node_js:
   - "4"  # LTS   from 2015-10 maintenance till 2018-04
   - "5"  # devel from 2015-10 current till 2016-06
   - "6"  # LTS   from 2016-10 maintenance till 2019-04
+
+# coveralls integration
+after_success:
+  - COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=9e10hnhgqJ8OIhcHqkueud8iDbqMldDWI node_modules/.bin/builder test --coveralls
+
+# Fix the c++ compiler on Ubuntu 14.04
 env:
   - CXX=g++-4.8
 addons:
@@ -14,5 +20,8 @@ addons:
     packages:
       - g++-4.8
 
-after_success:
-  - COVERALLS_SERVICE_NAME=travis-ci COVERALLS_REPO_TOKEN=9e10hnhgqJ8OIhcHqkueud8iDbqMldDWI node_modules/.bin/builder test --coveralls
+# fix node executable needed for browserify in Ubuntu 14.04
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq nodejs-legacy
+  
