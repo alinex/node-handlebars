@@ -19,9 +19,3 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-
-# fix node executable needed for browserify in Ubuntu 14.04
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq nodejs-legacy
-  
