@@ -31,7 +31,6 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "alinex-fs": "^2.0.1",
     "alinex-util": "^2.2.0",
     "chrono-node": "^1.2.3",
     "handlebars": "^4.0.5",

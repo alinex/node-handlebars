@@ -13,7 +13,7 @@ math = null # load on demand
 i18n = null # load on demand
 # alinex modules
 util = require 'alinex-util'
-fs = require 'alinex-fs'
+fs = require 'fs'
 
 
 # External Methods
