@@ -4,7 +4,7 @@ node_js:
   - "0.12" # from 2015-02 maintenance till 2017-04
   - "4"  # LTS   from 2015-10 maintenance till 2018-04
   - "5"  # devel from 2015-10 current till 2016-06
-#   - "6"  # LTS   from 2016-10 maintenance till 2019-04
+  - "6"  # LTS   from 2016-10 maintenance till 2019-04
 env:
   - CXX=g++-4.8
 addons:

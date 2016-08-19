@@ -31,10 +31,10 @@ exports.register = (handlebars) ->
     handlebars.registerHelper key, fn
 
 
-  # Handlebars Helper
-  # -------------------------------------------------
+# Handlebars Helper
+# -------------------------------------------------
 
-  helper =
+helper =
 
   # @param {Array} args the normal handlebars parameters
   # - left operand and right operand
