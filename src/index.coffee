@@ -30,10 +30,17 @@ exports.register = (handlebars) ->
   for key, fn of helper
     handlebars.registerHelper key, fn
 
-helper =
 
-  # ### Comparison
+  # Handlebars Helper
+  # -------------------------------------------------
 
+  helper =
+
+  # @param {Array} args the normal handlebars parameters
+  # - left operand and right operand
+  # - left operand, `String` operator, right operand
+  # @param {Function} fn the body function
+  # @param {Function} inverse the body function from the `else` part
   is: ->
     {args, fn, inverse} = argParse arguments
     if args.length is 2
@@ -62,45 +69,58 @@ helper =
     # execute content or else part
     if result then fn this else inverse this
 
-  # ### String
+  # String methods
+  # -------------------------------------------------------
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
   lowercase: ->
     {args} = argParse arguments
     args[0].toLowerCase()
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
   uppercase: ->
     {args} = argParse arguments
     args[0].toUpperCase()
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
   capitalizeFirst: ->
     {args} = argParse arguments
     args[0].charAt(0).toUpperCase() + args[0].slice(1)
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
   capitalizeEach: ->
     {args} = argParse arguments
     args[0].replace /\w\S*/g, (txt) -> txt.charAt(0).toUpperCase() + txt.substr(1)
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
+  # - `Number` maximum length to use
   shorten: ->
     {args} = argParse arguments
     [text, len] = args
     util.string.shorten text, len
 
+  # @param {Array} args the normal handlebars parameters
+  # - `String` text to be formatted
   nobr: ->
     {args} = argParse arguments
     [text] = args
     text.replace /[ ]/g, "\u00A0"
 
-  # ### Format
 
-  # format an ISO date using Moment.js - http://momentjs.com/
-  #
-  #     date = new Date()
-  #     {{dateFormat date "MMMM YYYY"}}
-  #     # January 2016
-  #     {{dateFormat date "LL"}}
-  #     # January 18, 2016
-  #     {{#dateFormat "LL"}}2016-01-18{{/dateFormat}}
-  #     # January 18, 2016
+  # Format methods
+  # --------------------------------------------------------
+
+  # @param {Array} args the normal handlebars parameters
+  # - `Number` to format (alternatively given as content of block)
+  # - `String` format for output
+  # - `String` locale to use
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   format: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -119,6 +139,12 @@ helper =
       numeral.language 'en' if locale
     obj
 
+  # @param {Array} args the normal handlebars parameters
+  # - `Date` to format (alternatively given as content of block)
+  # - `String` format for output
+  # - `String` locale to use
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   date: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -134,6 +160,13 @@ helper =
       return m.format format ? 'YYYY-MM-DD'
     obj
 
+  # @param {Array} args the normal handlebars parameters
+  # - `Number` the inline number to convert (alternatively given as content of block)
+  # - `String` unit from of the base value
+  # - `String` unit format to convert into
+  # - `String` locale to use
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   unit: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -162,6 +195,10 @@ helper =
     numeral.language 'en' if locale
     value
 
+  # @param {Array} args the normal handlebars parameters
+  # - `0` - `String` text to translate
+  # - `1` - `String` context for text retrieval
+  # - `2` - `String` locale to use
   i18n: ->
     {args} = argParse arguments
     [text, context, locale] = args
@@ -174,8 +211,15 @@ helper =
       , context
     i18n.__ text, context
 
-  # ### Math helper
 
+  # Math methods
+  # ----------------------------------------------------
+
+  # @param {Array} args the normal handlebars parameters
+  # - `Number` with the number to add
+  # - `Number`, `Number` same with an inline base number
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   add: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -186,6 +230,11 @@ helper =
     # work with numbers
     return Number(obj) + num
 
+  # @param {Array} args the normal handlebars parameters
+  # - `Number`, 'String' with the number to add and its unit
+  # - `Date`, `Number`, 'String' same with an inline date object
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   addDate: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -202,6 +251,11 @@ helper =
     # fallback
     obj
 
+  # @param {Array} args the normal handlebars parameters
+  # - `Number` with the number to subtract
+  # - `Number`, `Number` same with an inline base number
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   subtract: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -212,6 +266,11 @@ helper =
     # work with numbers
     return Number(obj) - num
 
+  # @param {Array} args the normal handlebars parameters
+  # - `Number`, 'String' with the number to subtract and its unit
+  # - `Date`, `Number`, 'String' same with an inline date object
+  # @param {Function} fn the body function
+  # @param {Object} data current context
   subtractDate: ->
     {args, fn, data} = argParse arguments
     if fn
@@ -229,8 +288,13 @@ helper =
     obj
 
 
-  # ### Collection
+  # Collections
+  # --------------------------------------------------
 
+  # Include other files.
+  #
+  # @param {Array} args the normal handlebars parameters
+  # - `0` - should contain the file to include
   iterate: ->
     {args, fn, data} = argParse arguments
     [obj] = args
@@ -250,6 +314,10 @@ helper =
     # return result
     result
 
+  # Include other files.
+  #
+  # @param {Array} args the normal handlebars parameters
+  # - `0` - should contain the file to include
   join: ->
     {args} = argParse arguments
     [obj, separator] = args
@@ -262,6 +330,10 @@ helper =
       return Object.keys(obj).join separator
     obj
 
+  # Count number of elements in collection.
+  #
+  # @param {Array} args the normal handlebars parameters
+  # - `0` - should contain the object to be counted
   count: ->
     {args} = argParse arguments
     [obj] = args
@@ -273,8 +345,14 @@ helper =
       return Object.keys(obj).length
     obj
 
-  # ### Other
 
+  # Other methods
+  # --------------------------------------------------
+
+  # Include other files.
+  #
+  # @param {Array} args the normal handlebars parameters
+  # - `0` - should contain the file to include
   include: ->
     {args} = argParse arguments
     [file] = args
@@ -283,10 +361,14 @@ helper =
     catch error
       return error.message
 
-# Handlebars Helper
-# -------------------------------------------------
 
+# Helper Methods
+# ---------------------------------------------------
+
+# This will load {@link moment} and {@link chrono} on demand and also add
+# chrono as fallback input parser in the `moment` library.
 initMoment = ->
+  # stop if already loaded
   return if moment
   moment = require 'moment'
   chrono ?= require 'chrono-node'
@@ -295,13 +377,16 @@ initMoment = ->
       when 'now' then new Date()
       else chrono.parseDate config._i
 
-# ### Get arguments
-# - name - name of the function
-# - args - the normal parameters
-# - hash - named parameters
-# - fn - content function in block helpers
-# - inverse - else part of block helpers
-# - data - current context
+# Get the function arguments as parameter object.
+#
+# @param {Array} arguments to be parsed
+# @return {Object} with named entries
+# - `name` - {String} name of the function
+# - `args` - {Array} the normal handlebars parameters
+# - `hash` - {Object} named handlebars parameters
+# - `fn` - {Function} content function in block helpers
+# - `inverse` - {Function} else part of block helpers
+# - `data` - {Object} current context
 argParse = (args) ->
   args = [].slice.call(args)
   options = args[args.length-1]
