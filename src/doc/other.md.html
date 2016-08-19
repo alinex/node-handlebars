@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alinex Handlebars: Readme</title>
+    <title>Other helpers</title>
     <meta name="HandheldFriendly" content="true" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -50,35 +50,35 @@
             <input name="q" type="text" class="form-control" placeholder="Search...">
           </form>
           <ul class="nav sidebar-to-top">
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Handlebars: Readme (/README.md)" class="btn btn-warning">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Handlebars: Readme (/README.md)" class="btn btn-primary">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.md.html" title="Handlebars Templates (/src/index.md)" class="btn btn-primary">Handlebars Templates</a>
+                  <a href="../index.md.html" title="Handlebars Templates (/src/index.md)" class="btn btn-primary">Handlebars Templates</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/collection.md.html" title="Collection helpers (/src/doc/collection.md)" class="btn btn-primary">Collection helpers</a>
+                  <a href="collection.md.html" title="Collection helpers (/src/doc/collection.md)" class="btn btn-primary">Collection helpers</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)" class="btn btn-primary">Comparison Helper</a>
+                  <a href="comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)" class="btn btn-primary">Comparison Helper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/format.md.html" title="Format helpers (/src/doc/format.md)" class="btn btn-primary">Format helpers</a>
+                  <a href="format.md.html" title="Format helpers (/src/doc/format.md)" class="btn btn-primary">Format helpers</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/math.md.html" title="Math helpers (/src/doc/math.md)" class="btn btn-primary">Math helpers</a>
+                  <a href="math.md.html" title="Math helpers (/src/doc/math.md)" class="btn btn-primary">Math helpers</a>
+                </li>
+                <li class="active level2">
+                  <a href="other.md.html" title="Other helpers (/src/doc/other.md)" class="btn btn-warning">Other helpers <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/other.md.html" title="Other helpers (/src/doc/other.md)" class="btn btn-primary">Other helpers</a>
-                </li>
-                <li class="level2">
-                  <a href="src/doc/string.md.html" title="String helpers (/src/doc/string.md)" class="btn btn-primary">String helpers</a>
+                  <a href="string.md.html" title="String helpers (/src/doc/string.md)" class="btn btn-primary">String helpers</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
                 </li>
           </ul>
         </div>
@@ -105,101 +105,63 @@
 <gcse:searchresults-only></gcse:searchresults-only>
 
           <main><p><ul class="table-of-contents" aria-hidden="true"><header>Index</header>
-<li><a href="#install">Install</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#license">License</a></li>
+<li>
+<ul>
+<li><a href="#include">include</a></li>
+</ul>
+</li>
 </ul>
 </p>
-<h1 id="alinex-handlebars-readme">Alinex Handlebars: Readme</h1>
-<p class="right"><a href="https://github.com/alinex/node-handlebars/subscription"><img src="https://img.shields.io/github/watchers/alinex/node-handlebars.svg?style=social&amp;label=Watch&amp;maxAge=2592000" alt="GitHub watchers" class="hidden-small" /></a>
-<a href="https://github.com/alinex/node-handlebars"><img src="https://img.shields.io/github/stars/alinex/node-handlebars.svg?style=social&amp;label=Star&amp;maxAge=2592000" alt="GitHub stars" /></a>
-<a href="https://github.com/alinex/node-handlebars"><img src="https://img.shields.io/github/forks/alinex/node-handlebars.svg?style=social&amp;label=Fork&amp;maxAge=2592000" alt="GitHub forks" class="hidden-small" /></a></p>
-<p><a href="https://www.npmjs.com/package/alinex-handlebars"><img src="https://img.shields.io/npm/v/alinex-handlebars.svg?maxAge=2592000&amp;label=latest%20version" alt="npm package" /></a>
-<a href="#license"><img src="https://img.shields.io/npm/l/alinex-handlebars.svg?maxAge=2592000" alt="latest version" class="hidden-small" /></a>
-<a href="https://travis-ci.org/alinex/node-handlebars"><img src="https://img.shields.io/travis/alinex/node-handlebars.svg?maxAge=2592000&amp;label=develop" alt="Travis status" /></a>
-<a href="https://coveralls.io/r/alinex/node-handlebars?branch=master"><img src="https://img.shields.io/coveralls/alinex/node-handlebars.svg?maxAge=2592000" alt="Coveralls status" /></a>
-<a href="https://gemnasium.com/alinex/node-handlebars"><img src="https://img.shields.io/gemnasium/alinex/node-handlebars.svg?maxAge=2592000" alt="Gemnasium status" /></a>
-<a href="https://github.com/alinex/node-handlebars/issues"><img src="https://img.shields.io/github/issues/alinex/node-handlebars.svg?maxAge=2592000" alt="GitHub issues" class="hidden-small" /></a></p>
-<p>This is a collection of helper methods extending the <a href="http://handlebarsjs.com/">handlebars</a>
-template system.</p>
+<h1 id="other-helpers">Other helpers</h1>
+<h3 id="include">include</h3>
+<p>This is used to include another file as it is.</p>
+<blockquote>
+<p>It is not interpreted as handlebars template itself but output as is.</p>
+</blockquote>
+<p><strong>Parameter:</strong></p>
 <ul>
-<li>powerful helper</li>
-<li>easy to use</li>
-<li>easy to integrate</li>
+<li><code>String</code> file path to include</li>
 </ul>
-<blockquote>
-<p>It is one of the modules of the <a href="https://alinex.github.io/code.html">Alinex Namespace</a>
-following the code standards defined in the <a href="https://alinex.github.io/develop">General Docs</a>.</p>
-</blockquote>
-<p class="hidden"><strong>Read the complete documentation under
-<a href="https://alinex.github.io/node-handlebars">https://alinex.github.io/node-handlebars</a>.</strong></p>
-<h2 id="install">Install</h2>
-<p><a href="https://www.npmjs.com/package/alinex-handlebars"><img src="https://nodei.co/npm/alinex-handlebars.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" />
-<img src="https://nodei.co/npm-dl/alinex-handlebars.png?months=9&amp;height=3" alt="Downloads" />
-</a></p>
-<p>The easiest way is to let npm add the module directly to your modules
-(from within you node modules directory):</p>
-<pre class="language bash"><header>Shell Script</header><code>npm install alinex-handlebars --save</code></pre>
-<p>And update it to the latest version later:</p>
-<pre class="language bash"><header>Shell Script</header><code>npm update alinex-handlebars --save</code></pre>
-<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
-<h2 id="usage">Usage</h2>
-<p>This library is implemented completely asynchronous, to allow io based checks
-and references within the structure.</p>
-<p>To use the handlebars you have to only include it and register it with your handlebars
-module:</p>
-<pre class="language coffeescript"><header>CoffeeScript Code</header><code>handlebars = <span class="hljs-built_in">require</span> <span class="hljs-string">'handlebars'</span></code>
-<code><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-handlebars'</span>).register handlebars</code></pre>
-<p>That’s all.</p>
-<h2 id="license">License</h2>
-<p>© Copyright 2016 Alexander Schilling</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<blockquote>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-</blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml"></span><span class="hljs-template-variable">{{include "myfile.txt" }}</span><span class="xml"></span></code>
+<code><span class="xml"></span></code></pre>
+<p>This will search for the file from the current directory. So best to use absolute
+paths here.</p>
 </main>
         </div>
         <div class="col-sm-3 col-cm-pull-9 sidebar">
           <ul class="nav nav-sidebar">
             <li class="header">
-              <a href="README.md.html">Alinex Handlebars</a>
+              <a href="../../README.md.html">Alinex Handlebars</a>
             </li>
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Handlebars: Readme (/README.md)">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Handlebars: Readme (/README.md)">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.md.html" title="Handlebars Templates (/src/index.md)">Handlebars Templates</a>
+                  <a href="../index.md.html" title="Handlebars Templates (/src/index.md)">Handlebars Templates</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/collection.md.html" title="Collection helpers (/src/doc/collection.md)">Collection helpers</a>
+                  <a href="collection.md.html" title="Collection helpers (/src/doc/collection.md)">Collection helpers</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)">Comparison Helper</a>
+                  <a href="comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)">Comparison Helper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/format.md.html" title="Format helpers (/src/doc/format.md)">Format helpers</a>
+                  <a href="format.md.html" title="Format helpers (/src/doc/format.md)">Format helpers</a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/math.md.html" title="Math helpers (/src/doc/math.md)">Math helpers</a>
+                  <a href="math.md.html" title="Math helpers (/src/doc/math.md)">Math helpers</a>
+                </li>
+                <li class="active level2">
+                  <a href="other.md.html" title="Other helpers (/src/doc/other.md)">Other helpers <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/doc/other.md.html" title="Other helpers (/src/doc/other.md)">Other helpers</a>
-                </li>
-                <li class="level2">
-                  <a href="src/doc/string.md.html" title="String helpers (/src/doc/string.md)">String helpers</a>
+                  <a href="string.md.html" title="String helpers (/src/doc/string.md)">String helpers</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
                 </li>
           </ul>
         </div>

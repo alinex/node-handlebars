@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars Templates</title>
+    <meta name="HandheldFriendly" content="true" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/8.5.0/styles/solarized_light.min.css" /><style type="text/css">#topnav{text-align:center;background:#333;padding-bottom:20px;position:fixed;margin-top:0;width:100%;bottom:0;top:51px;}#topnav .navbar-nav{margin:0;margin-top:8px;display:-webkit-inline-box;display:-moz-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-box;display:inline-flex}#topnav .sidebar-to-top .btn{text-align:left}#topnav .sidebar-to-top li.level2>a{margin-left:20px}#topnav .sidebar-to-top li.level3>a{margin-left:40px}#topnav .sidebar-to-top li.level4>a{margin-left:60px}#topnav .sidebar-to-top li.level5>a{margin-left:80px}#topnav .sidebar-to-top li.level6>a{margin-left:100px}.navbar-fixed-top .navbar-collapse{max-height:100%}.navbar{min-width:300px}.nav>li{padding:2px 12px}.navbar-inverse .nav>li>a{color:#222;font-weight:bold;padding-top:6px;padding-bottom:6px;}.navbar-inverse .nav>li>a:focus,.navbar-inverse .nav>li>a:hover{background:#73aad8;background:#4b91cd -webkit-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -moz-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -o-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -ms-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd linear-gradient(180deg, #73aad8, #4b91cd) repeat-x}.navbar-inverse .nav>li>a.btn-warning:focus,.navbar-inverse .nav>li>a.btn-warning:hover{background:#ec9721;background:#c97c11 -webkit-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -moz-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -o-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -ms-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 linear-gradient(180deg, #ec9721, #c97c11) repeat-x}.navbar-spacer{height:51px}.btn-warning:active,.btn-primary:active{-webkit-transform:scale(.92);-moz-transform:scale(.92);-o-transform:scale(.92);-ms-transform:scale(.92);transform:scale(.92)}.btn-warning{background:#f2b560;background:#ee9f31 -webkit-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -moz-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -o-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -ms-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 linear-gradient(180deg, #f2b560, #ee9f31) repeat-x}.btn-primary{background:#3d88c9;background:#2e6ea5 -webkit-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -moz-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -o-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -ms-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 linear-gradient(180deg, #3d88c9, #2e6ea5) repeat-x}.sidebar .nav{display:none;list-style:disc;padding-left:25px;}.sidebar .nav>li{display:list-item;}.sidebar .nav>li>a{color:#222;}.sidebar .nav>li>a:active{-webkit-box-shadow:0 2px 10px 2px rgba(0,0,0,0.25);box-shadow:0 2px 10px 2px rgba(0,0,0,0.25)}.sidebar .nav>li>a:hover{background:#3d88c9;background:#2e6ea5 -webkit-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -moz-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -o-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -ms-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 linear-gradient(180deg, #3d88c9, #2e6ea5) repeat-x;color:#fff}.sidebar .nav>li.header,.sidebar .nav>li.active{display:none}.sidebar .nav>li.active>a{background:#73aad8;background:#4b91cd -webkit-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -moz-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -o-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd -ms-linear-gradient(270deg, #73aad8, #4b91cd) repeat-x;background:#4b91cd linear-gradient(180deg, #73aad8, #4b91cd) repeat-x;}.sidebar .nav>li.active>a:hover{background:#3d88c9;background:#2e6ea5 -webkit-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -moz-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -o-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 -ms-linear-gradient(270deg, #3d88c9, #2e6ea5) repeat-x;background:#2e6ea5 linear-gradient(180deg, #3d88c9, #2e6ea5) repeat-x;color:#fff}.sidebar .nav>li.header>a{font-weight:bold;background:#f2b560;background:#ee9f31 -webkit-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -moz-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -o-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 -ms-linear-gradient(270deg, #f2b560, #ee9f31) repeat-x;background:#ee9f31 linear-gradient(180deg, #f2b560, #ee9f31) repeat-x;}.sidebar .nav>li.header>a:hover{background:#ec9721;background:#c97c11 -webkit-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -moz-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -o-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 -ms-linear-gradient(270deg, #ec9721, #c97c11) repeat-x;background:#c97c11 linear-gradient(180deg, #ec9721, #c97c11) repeat-x;color:#fff}.sidebar .nav>li.level2>a{padding-left:30px}.sidebar .nav>li.level3>a{padding-left:50px}.sidebar .nav>li.level4>a{padding-left:70px}.sidebar .nav>li.level5>a,.sidebar .nav>li.level6>a{padding-left:90px}.navbar-inverse .navbar-toggle{background-color:#444;}.navbar-inverse .navbar-toggle:hover{background-color:#666}@media (min-width:768px){#topnav{position:inherit;background:#222;padding-bottom:0}#topnav .nav>li{padding:0 4px}#topnav .sidebar-to-top{display:none}.navbar-right{margin-right:0}.navbar-nav >li>a{padding:6px 10px}.sidebar{overflow:auto;position:fixed;top:51px;left:0;bottom:0;background:#ddd;padding:0;}.sidebar h1,.sidebar h2{display:none}.sidebar .nav{display:block;list-style:none;padding-left:0;}.sidebar .nav>li{padding:0;}.sidebar .nav>li.header,.sidebar .nav>li.active{display:block;}.sidebar .nav>li.header.level2>a:before,.sidebar .nav>li.active.level2>a:before,.sidebar .nav>li.header.level3>a:before,.sidebar .nav>li.active.level3>a:before,.sidebar .nav>li.header.level4>a:before,.sidebar .nav>li.active.level4>a:before,.sidebar .nav>li.header.level5>a:before,.sidebar .nav>li.active.level5>a:before,.sidebar .nav>li.header.level6>a:before,.sidebar .nav>li.active.level6>a:before{content:"•"}.sidebar .nav>li>a{padding-top:8px;padding-bottom:8px}.sidebar .nav>li.level2>a:before,.sidebar .nav>li.level3>a:before,.sidebar .nav>li.level4>a:before,.sidebar .nav>li.level5>a:before,.sidebar .nav>li.level6>a:before{content:"◦";font-size:150%;line-height:10%;font-weight:bold;padding-right:5px;display:block;float:left;margin-top:8px;margin-left:-15px;color:#666}}img.preload{display:none}body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.2;-ms-word-break:break-all;word-break:break-all;word-break:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;-webkit-hyphenate-before:2;-webkit-hyphenate-after:3;hyphenate-lines:3;min-width:300px}h1,h2,h3,h4,h5,h6{font-weight:bold;}h1:before,h2:before,h3:before,h4:before,h5:before,h6:before{display:block;content:" ";margin-top:-66px;height:66px;visibility:hidden}h1,h2,h3{clear:both}h1{border-bottom:3px solid #222;padding-bottom:5px}h2{border-bottom:2px dotted #222;padding-bottom:3px}h3{border-bottom:2px dotted #aaa;padding-bottom:2px}h4{border-bottom:1px dotted #aaa}dt{font-weight:bold;margin-top:8px}dd{margin-left:20px}blockquote{border:1px solid #eee;border-radius:3px;border-left:5px solid #337ab7;padding:5px 15px;margin:10px 0}svg,img{max-width:100%}table{border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all;margin-bottom:10px;}table th,table td{padding:6px 13px;border:1px solid #ddd}table th{background-color:rgba(0,0,0,0.04);font-weight:bold;border-bottom:3px solid #999}table tr{background-color:#fff;border-top:1px solid #ccc;}table tr:nth-child(2n){background-color:rgba(0,0,0,0.04)}img{vertical-align:middle}.emoji{height:1em}abbr,acronym{border-bottom:dotted 1px}a code{color:#337ab7}code,tt{background-color:#fafafa;border-radius:4px;font-size:85%;margin:0;padding:.2em 0}pre{background-color:#fafafa;border-radius:10px;border:1px solid #a4a4a4;font-size:85%;margin:20px;padding:10px;}pre code,pre tt{background:none}pre.language{counter-reset:line;max-height:265px;padding-top:30px;padding-bottom:0;overflow-x:hidden;}pre.language code,pre.language tt{display:block;position:relative;float:left;width:100%;border-left:45px solid #ddd;margin-left:-10px;padding-left:5px;}pre.language code:before,pre.language tt:before{counter-increment:line;content:counter(line);min-width:35px;float:left;text-align:right;padding-right:5px;color:#808080;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-select:none;margin-left:-45px}pre.language code:first-of-type,pre.language tt:first-of-type{padding-top:10px}pre.language code:last-child,pre.language tt:last-child{padding-bottom:10px}pre.language header{border-top-left-radius:4px;border-top-right-radius:4px;font-weight:bold;background:#fafafa;margin:-30px -10px 0 -10px;padding:5px 15px}pre.language.coffeescript header,pre.language.javascript header,pre.language.ruby header,pre.language.python header,pre.language.perl header,pre.language.cc header,pre.language.cpp header,pre.language.cs header,pre.language.java header,pre.language.jsp header,pre.language.groovy header,pre.language.php header,pre.language.bash header,pre.language.sql header,pre.language.makefile header{background:#f0ad4e}pre.language.json header,pre.language.cson header,pre.language.yaml header{background:#61b961}pre.language.handlebars header,pre.language.css header,pre.language.stylus header,pre.language.scss header,pre.language.less header,pre.language.markdown header{background:#76abca}ul.table-of-contents{max-width:100px;max-height:30px;overflow:hidden;position:fixed;top:51px;right:0;background:#ddd;padding:5px 15px;-webkit-transition:max-width 100ms ease 1.2s, max-height 1s ease 200ms;-moz-transition:max-width 100ms ease 1.2s, max-height 1s ease 200ms;-o-transition:max-width 100ms ease 1.2s, max-height 1s ease 200ms;-ms-transition:max-width 100ms ease 1.2s, max-height 1s ease 200ms;transition:max-width 100ms ease 1.2s, max-height 1s ease 200ms;border-left:2px solid #999;border-bottom:2px solid #999;border-bottom-left-radius:10px;list-style-type:none;white-space:nowrap;z-index:100;}ul.table-of-contents:hover{max-width:285px;max-height:248px;-webkit-transition:max-width 100ms ease, max-height 1s ease 100ms;-moz-transition:max-width 100ms ease, max-height 1s ease 100ms;-o-transition:max-width 100ms ease, max-height 1s ease 100ms;-ms-transition:max-width 100ms ease, max-height 1s ease 100ms;transition:max-width 100ms ease, max-height 1s ease 100ms;overflow-y:auto}ul.table-of-contents header{background:#999;font-weight:bold;margin:-5px -15px;padding:5px 15px}ul.table-of-contents>li{padding-bottom:2px;padding-right:8px;}ul.table-of-contents>li:first-of-type{padding-top:10px}ul.table-of-contents a{color:#222}ul.table-of-contents li.sidebar{display:list-item}@media (min-width:768px){ul.table-of-contents li.sidebar{display:none}}div.detail,div.info,div.warning,div.alert{padding:30px 10px 6px 10px;margin:5px 0 8px 0;border-radius:3px;padding-left:60px;border-radius:18px;border-top-left-radius:0;}div.detail>p,div.info>p,div.warning>p,div.alert>p{margin-bottom:0}div.detail header,div.info header,div.warning header,div.alert header{font-weight:bold;position:absolute;margin-top:-30px;margin-left:-60px;padding:3px 20px 3px 10px;border-bottom-right-radius:18px}div:before{content:'\24D8';color:#666;position:absolute;font-size:28px;font-weight:900;padding-top:5px;margin-left:-50px}div.detail{background-color:#fafafa;border:2px solid #ddd;padding-top:0}div.info{background-color:#9f9;background-image:-webkit-linear-gradient(top, #bfb 0%, #6d6 100%);background-image:-moz-linear-gradient(top, #bfb 0%, #6d6 100%);background-image:-o-linear-gradient(top, #bfb 0%, #6d6 100%);background-image:-ms-linear-gradient(top, #bfb 0%, #6d6 100%);background-image:linear-gradient(to bottom, #bfb 0%, #6d6 100%);border:2px solid #6d6;}div.info header{background-color:#6d6}div.info:before{content:'\24D8';text-shadow:0 -1px 0 #6d6}div.warning{background-color:#fc9;background-image:-webkit-linear-gradient(top, #f97 0%, #e86 100%);background-image:-moz-linear-gradient(top, #f97 0%, #e86 100%);background-image:-o-linear-gradient(top, #f97 0%, #e86 100%);background-image:-ms-linear-gradient(top, #f97 0%, #e86 100%);background-image:linear-gradient(to bottom, #f97 0%, #e86 100%);border:2px solid #e86;}div.warning header{background-color:#e86}div.warning:before{content:'\2605';text-shadow:0 -1px 0 #e86}div.alert{background-color:#f99;background-image:-webkit-linear-gradient(top, #faa 0%, #c00 100%);background-image:-moz-linear-gradient(top, #faa 0%, #c00 100%);background-image:-o-linear-gradient(top, #faa 0%, #c00 100%);background-image:-ms-linear-gradient(top, #faa 0%, #c00 100%);background-image:linear-gradient(to bottom, #faa 0%, #c00 100%);border:2px solid #c00;}div.alert header{background-color:#c00;color:#fff}div.alert:before{content:'\24D8';text-shadow:0 -1px 0 #c00}.cse .gsc-control-cse,.gsc-control-cse{padding:0 !important;}.cse .gsc-control-cse table tr,.gsc-control-cse table tr,.cse .gsc-control-cse table th,.gsc-control-cse table th,.cse .gsc-control-cse table td,.gsc-control-cse table td{border:0}.cse .gsc-control-cse .gsc-cursor-current-page,.gsc-control-cse .gsc-cursor-current-page{color:#fff !important}.cse .gsc-control-cse .gsc-webResult.gsc-result:hover,.gsc-control-cse .gsc-webResult.gsc-result:hover,.cse .gsc-control-cse .gsc-imageResult:hover,.gsc-control-cse .gsc-imageResult:hover{border-left:5px solid #337ab7;padding-left:3px}.cse .gsc-control-cse .gcsc-branding,.gsc-control-cse .gcsc-branding{display:none !important}.gsc-adBlock{display:none !important}@media print{.navbar-spacer,.table-of-contents,.sidebar{display:none}.main{left:0;width:100%}pre.language header{border-bottom:2px solid #999}}.text-red{color:#d13f19}.text-green{color:#2ecc40}.text-yellow{color:#ffdc00}.text-blue{color:#0074d9}.text-magenta{color:#f0f}.text-cyan{color:#0ff}.text-gray{color:#aaa}.bg-white{background-color:#fff}.center{text-align:center}.left{float:left}.right{float:right}.spacing{padding:10px}.hidden{display:none}@media (max-width:767px){.hidden-small{display:none}}@media (min-width:768px){.hidden-large{display:none}}</style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topnav" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://alinex.github.io/" onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Homepage">
+</a>
+<img class="preload" src="https://alinex.github.io/images/Alinex-200.png" aria-hidden="true">
+
+        </div>
+        <div id="topnav" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://alinex.github.io/blog" class="btn btn-primary">
+    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Blog
+  </a></li>
+<li><a href="https://alinex.github.io/develop" class="btn btn-primary">
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Develop
+  </a></li>
+<li><a href="https://alinex.github.io/code.html" class="btn btn-warning">
+    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Code
+  </a></li>
+
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input name="q" type="text" class="form-control" placeholder="Search...">
+          </form>
+          <ul class="nav sidebar-to-top">
+                <li class="level0">
+                  <a href="../README.md.html" title="Alinex Handlebars: Readme (/README.md)" class="btn btn-primary">Readme</a>
+                </li>
+                <li class="active level1">
+                  <a href="index.md.html" title="Handlebars Templates (/src/index.md)" class="btn btn-warning">Handlebars Templates <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="level2">
+                  <a href="doc/collection.md.html" title="Collection helpers (/src/doc/collection.md)" class="btn btn-primary">Collection helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)" class="btn btn-primary">Comparison Helper</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/format.md.html" title="Format helpers (/src/doc/format.md)" class="btn btn-primary">Format helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/math.md.html" title="Math helpers (/src/doc/math.md)" class="btn btn-primary">Math helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/other.md.html" title="Other helpers (/src/doc/other.md)" class="btn btn-primary">Other helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/string.md.html" title="String helpers (/src/doc/string.md)" class="btn btn-primary">String helpers</a>
+                </li>
+                <li class="level1">
+                  <a href="index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
+                </li>
+                <li class="level0">
+                  <a href="../Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
+                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="navbar-spacer"></div>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-9 col-sm-push-3 main">
+          <script>
+  (function() {
+    var cx = '010539487162786288372:chxqbheanxc';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchresults-only></gcse:searchresults-only>
+
+          <main><p><ul class="table-of-contents" aria-hidden="true"><header>Index</header>
+<li><a href="#expression-syntax">Expression Syntax</a>
+<ul>
+<li><a href="#escaping">Escaping</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#helpers">Helpers</a></li>
+<li><a href="#paths-with-dot-notation">Paths (with dot notation)</a></li>
+<li><a href="#parent-path">Parent Path …/</a></li>
+</ul>
+</li>
+<li><a href="#built-in-helpers">Built-In Helpers</a>
+<ul>
+<li><a href="#if-block">if (block)</a></li>
+<li><a href="#unless-block">unless (block)</a></li>
+<li><a href="#each-block">each (block)</a></li>
+<li><a href="#with-block">with (block)</a></li>
+<li><a href="#lookup">lookup</a></li>
+<li><a href="#raw-block">raw (block)</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="handlebars-templates">Handlebars Templates</h1>
+<p>This packages contains helper methods for the
+<a href="http://handlebarsjs.com/">handlebars template</a> engine.
+They can be used like the normal ones from within the templates.</p>
+<blockquote>
+<p>With this package you may also use the helpers defined in the subpages
+of the manuel in addtion to the few default ones (documented below).</p>
+</blockquote>
+<p>Handlebars is a simple web template system with minimal logic support. The
+templates written in this language will be compiled and executed with specific
+context to get the result. It’s main purpose is for HTML output but can be used
+for other text based formats, too.</p>
+<p>An template may look like:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>  </code>
+<code>    </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> users}}</span><span class="xml"></span></code>
+<code><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">{{firstname}}</span><span class="xml"> </span><span class="hljs-template-variable">{{lastname}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>      </code>
+<code>    </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code>
+<code>{% endraw %}</code>
+<code></span></code></pre>
+<h2 id="expression-syntax">Expression Syntax</h2>
+<p>The Handlebars Expressions like seen above are written like (a double stash before,
+followed with the content to be evaluated, followed by a closing double stash):</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{ content goes here }}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>Special HTML characters are escaped automatically, but you may prevent this
+with the following syntax:</p>
+<h3 id="escaping">Escaping</h3>
+<p>The content may be a variable to use, some control methods or special helper
+functions to include.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  Triple Stash </span><span class="hljs-template-variable">{{{ }}</span><span class="xml">} For Non-escape HTML</span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<h3 id="comments">Comments</h3>
+<p>This is how you add comments in a Handlebars template:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-comment">{{! Whatever is inside this comment expression will not be outputted  }}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>Or if your comment may contain other handlebars tokens use:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-comment">{{!-- this may contain {{tokens}}</span><span class="xml"> and more --}}</span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>Instead of the regular HTML comments they will not be outputted to the user.</p>
+<h3 id="blocks">Blocks</h3>
+<p>Blocks in Handlebars are expression that has a block, an opening <code>{% raw %}{{# }}{% endraw %}</code>
+followed by a closing <code>{% raw %}{{/ }}{% endraw %}</code>. See some more examples below.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">Content goes here.</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>Here is an if block</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> someValueIsTrue}}</span><span class="xml">Content goes here</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<h3 id="helpers">Helpers</h3>
+<p>An helper is an additional method working with some content or variable. They
+may be used as simple functions or block expressions or both depending on it’s
+implementation.</p>
+<p>Calls to a helper may also have literal values passed to them either as parameter
+arguments or hash arguments. See the helper’s description how it needs them.</p>
+<p>Supported literals include numbers, strings, true, false, null and undefined.</p>
+<p><strong>Inline helpers</strong> are used as:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{helperName arg1 arg2 arg3 mapArg="val"}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p><strong>Block helpers</strong> are used as:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name">helperName</span> arg 1 arg2}}</span><span class="xml"></span></code>
+<code><span class="xml">    other stuff</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name">helperName</span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<h3 id="paths-with-dot-notation">Paths (with dot notation)</h3>
+<p>A path in Handlebars is a property lookup. If we have a name property that
+contains an object, such as:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  objData = {name: {firstName: "Michael", lastName:"Jackson"}}</span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>We can use nested paths (dot notation) to lookup the property you want, like this:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{name.firstName}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<h3 id="parent-path">Parent Path …/</h3>
+<p>Handlebars also has a parent path …/ to lookup properties on parents of the
+current context. Thus with a data object such as this:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  shoesData = {groupName:"Celebrities", users:[{name:{firstName:"Mike", lastName:"Alexander" }}, {name:{firstName:"John", lastName:"Waters" }} ]};</span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>We can use the parent path …/ to get the groupName property:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  ​<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"shoe-template"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"x-handlebars-template"</span>&gt;</span><span class="undefined">​</span></code>
+<code><span class="undefined">    </span></span><span class="hljs-template-tag">{{#<span class="hljs-name">users</span>}}</span><span class="xml"><span class="handlebars"><span class="xml">​</span></code>
+<code><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span></span></span><span class="hljs-template-variable">{{name.firstName}}</span><span class="xml"><span class="undefined"> </span></span><span class="hljs-template-variable">{{name.lastName}}</span><span class="xml"><span class="actionscript"> <span class="hljs-keyword">is</span> <span class="hljs-keyword">in</span> the </span></span><span class="hljs-template-variable">{{../groupName}}</span><span class="xml"><span class="handlebars"><span class="xml"> group.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>​</code>
+<code>    </span></span></span><span class="hljs-template-tag">{{/<span class="hljs-name">users</span>}}</span><span class="xml"><span class="undefined"></span></code>
+<code><span class="xml">  ​</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code>
+<code>{% endraw %}</code>
+<code></span></code></pre>
+<h2 id="built-in-helpers">Built-In Helpers</h2>
+<h3 id="if-block">if (block)</h3>
+<p>A block in this condition will only be rendered if the given argument is empty
+or null.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> author}}</span><span class="xml"></span></code>
+<code><span class="xml">    Author: </span><span class="hljs-template-variable">{{firstName}}</span><span class="xml"> </span><span class="hljs-template-variable">{{lastName}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>It can also contain an alternative to use if not:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> author}}</span><span class="xml"></span></code>
+<code><span class="xml">    Author: </span><span class="hljs-template-variable">{{firstName}}</span><span class="xml"> </span><span class="hljs-template-variable">{{lastName}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"></span></code>
+<code><span class="xml">    No Author defined.</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>And finally you can also chain multiple conditional blocks together:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> isActive}}</span><span class="xml"></span></code>
+<code><span class="xml">    Is working now...</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span> <span class="hljs-builtin-name">if</span> isInactive}}</span><span class="xml"></span></code>
+<code><span class="xml">    Is inactive.</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"></span></code>
+<code><span class="xml">    Unknown state.</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>As an extended version of this operator you may also consider using the
+<a href="doc/comparison.md.html#is-block" title="File: comparison.md">is block</a> helper.</p>
+<h3 id="unless-block">unless (block)</h3>
+<p>You can use the unless helper as the inverse of the <code>if</code> helper. His content will
+be rendered if the expression returns a falsy value.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">unless</span></span> author}}</span><span class="xml"></span></code>
+<code><span class="xml">    No Author defined.</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>As an extended version of this operator you may also consider using the
+<a href="doc/comparison.md.html#is-block" title="File: comparison.md">is block</a> helper.</p>
+<h3 id="each-block">each (block)</h3>
+<p>You can iterate over a <strong>list</strong> using this. Inside the block, you can use <code>this</code> to
+reference the element being iterated over.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> people}}</span><span class="xml"></span></code>
+<code><span class="xml">    - </span><span class="hljs-template-variable">{{this}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>If it contains objects you may use their values:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> people}}</span><span class="xml"></span></code>
+<code><span class="xml">    - </span><span class="hljs-template-variable">{{first}}</span><span class="xml"> </span><span class="hljs-template-variable">{{this.last}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"></span></code>
+<code><span class="xml">    No people assigned!</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>As you see you may use the <code>this</code> value explicitly or directly use the object’s
+properties. And like in the <code>if</code> helper an additional <code>else</code> part will be rendered
+if nothing to iterate is found.</p>
+<p>When looping through items in each, you can optionally reference the current loop
+index with ‘@index’:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> people}}</span><span class="xml"></span></code>
+<code><span class="xml">    </span><span class="hljs-template-variable">{{@index}}</span><span class="xml">: </span><span class="hljs-template-variable">{{first}}</span><span class="xml"> </span><span class="hljs-template-variable">{{this.last}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{<span class="hljs-builtin-name">else</span>}}</span><span class="xml"></span></code>
+<code><span class="xml">    No people assigned!</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>Also the first and last steps of iteration are noted via the ‘@first’ and ‘@last’
+variables when iterating over an array. When iterating over an object only the
+’@first’ is available.</p>
+<p>Nested each blocks may access the iteration variables via depth based paths. To
+access the parent index, for example, ‘{% raw %}{{@…/index}}{% endraw %}’ can be
+used.</p>
+<p>The each helper also supports block parameters, allowing for named references
+anywhere in the block:</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> array as |value key|}}</span><span class="xml"></span></code>
+<code><span class="xml">    </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> child as |childValue childKey|}}</span><span class="xml"></span></code>
+<code><span class="xml">      </span><span class="hljs-template-variable">{{key}}</span><span class="xml"> - </span><span class="hljs-template-variable">{{childKey}}</span><span class="xml">. </span><span class="hljs-template-variable">{{childValue}}</span><span class="xml"></span></code>
+<code><span class="xml">    </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<blockquote>
+<p>It is not usable on objects, only on lists or lists of objects but you may use
+<a href="doc/collection.md.html#iterate-block" title="File: collection.md">Collection helpers</a> as alternative.</p>
+</blockquote>
+<h3 id="with-block">with (block)</h3>
+<p>Normally, Handlebars templates are evaluated against the context passed into the
+compiled method. But you may shift the current context for a section of a template
+by using the built-in with block helper.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">with</span></span> author}}</span><span class="xml"></span></code>
+<code><span class="xml">    Author: </span><span class="hljs-template-variable">{{firstName}}</span><span class="xml"> </span><span class="hljs-template-variable">{{lastName}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">with</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p><code>with</code> can also be used with block parameters to define known references in the
+current block. The example above can be converted to</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">with</span></span> author as |myAuthor|}}</span><span class="xml"></span></code>
+<code><span class="xml">    Author: </span><span class="hljs-template-variable">{{myAuthor.firstName}}</span><span class="xml"> </span><span class="hljs-template-variable">{{myAuthor.lastName}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">with</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>This can also contain an <code>else</code> section which will display only when the passed
+value is empty.</p>
+<h3 id="lookup">lookup</h3>
+<p>The lookup helper allows for dynamic parameter resolution using Handlebars variables.
+This is useful for resolving values for array indexes.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> bar}}</span><span class="xml"></span></code>
+<code><span class="xml">    </span><span class="hljs-template-variable">{{lookup ../foo @index}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml"></span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<h3 id="raw-block">raw (block)</h3>
+<p>Raw blocks are available for templates needing to handle unprocessed mustache blocks.</p>
+<pre class="language handlebars"><header>Handlebars Template</header><code><span class="xml">{% raw %}</span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{{{raw-helper}}</span><span class="xml">}}</span></code>
+<code><span class="xml">    </span><span class="hljs-template-variable">{{bar}}</span><span class="xml"></span></code>
+<code><span class="xml">  </span><span class="hljs-template-variable">{{{{/raw-helper}}</span><span class="xml">}}</span></code>
+<code><span class="xml">{% endraw %}</span></code>
+<code><span class="xml"></span></code></pre>
+<p>This keeps the internal handlebars syntax untouched.</p>
+</main>
+        </div>
+        <div class="col-sm-3 col-cm-pull-9 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="header">
+              <a href="../README.md.html">Alinex Handlebars</a>
+            </li>
+                <li class="level0">
+                  <a href="../README.md.html" title="Alinex Handlebars: Readme (/README.md)">Readme</a>
+                </li>
+                <li class="active level1">
+                  <a href="index.md.html" title="Handlebars Templates (/src/index.md)">Handlebars Templates <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="level2">
+                  <a href="doc/collection.md.html" title="Collection helpers (/src/doc/collection.md)">Collection helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/comparison.md.html" title="Comparison Helper (/src/doc/comparison.md)">Comparison Helper</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/format.md.html" title="Format helpers (/src/doc/format.md)">Format helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/math.md.html" title="Math helpers (/src/doc/math.md)">Math helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/other.md.html" title="Other helpers (/src/doc/other.md)">Other helpers</a>
+                </li>
+                <li class="level2">
+                  <a href="doc/string.md.html" title="String helpers (/src/doc/string.md)">String helpers</a>
+                </li>
+                <li class="level1">
+                  <a href="index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
+                </li>
+                <li class="level0">
+                  <a href="../Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
+                </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript"><!--
+    $(".table-of-contents").bind("mouseleave", function(event) { $(".table-of-contents").scrollTop(0); });
+    //--></script>
+  </body>
+</html>
