@@ -1,3 +1,4 @@
+.git
 .project
 .settings
 .DS_Store
@@ -12,7 +13,7 @@
 /var/lib/
 /var/local/
 npm-debug.log
-/man/
 /test/
 *.json
 *.yml
+/.*
