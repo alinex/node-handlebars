@@ -4,6 +4,23 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.2.2 (2016-09-29)
+-------------------------------------------------
+- Update alinex-util@2.4.2, mathjs@3.5.3, moment@2.15.1, alinex-builder@2.3.8alinex-util@2.4.2, mathjs@3.5.3, moment@2.15.1, alinex-builder@2.3.8
+- Update travis test versions.
+- Updated ignore files.
+- Remove uglifyjs from compile because of travis problems.
+- Try to fix travis.
+- Try to fix travis.
+- Fix helper initialization.
+- Try to fix travis.
+- Try to fix travis.
+- Remove alinex-fs because no longer needed.
+- Update documentation.
+- Update docs.
+- Rename links to Alinex Namespace.
+- Add copyright sign.
+
 Version 1.2.1 (2016-07-13)
 -------------------------------------------------
 - Fixed bug with is-helper not supporting the outer context in it's inner.
