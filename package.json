@@ -31,16 +31,16 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "alinex-util": "^2.2.0",
+    "alinex-util": "^2.4.2",
     "chrono-node": "^1.2.3",
     "handlebars": "^4.0.5",
     "i18n": "^0.8.2",
-    "mathjs": "^3.2.1",
-    "moment": "^2.13.0",
+    "mathjs": "^3.5.3",
+    "moment": "^2.15.1",
     "numeral": "^1.5.3"
   },
   "devDependencies": {
-    "alinex-builder": "^2.1.6",
+    "alinex-builder": "^2.3.8",
     "chai": "^3.5.0",
     "chai-datetime": "^1.4.1"
   },
